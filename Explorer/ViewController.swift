@@ -10,34 +10,31 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    var tableView = UITableView(frame: .zero, style: .plain)
+    lazy var logTableView: UITableView = {
+        let tableView = UITableView(frame: .zero, style: .plain)
+        tableView.separatorStyle = .none
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(TableViewCell.self, forCellReuseIdentifier: "Cell")
+        return tableView
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         title = "Explorer"
         self.navigationController?.navigationBar.isTranslucent = false
-        view.backgroundColor = .blue
-        view.addSubview(tableView)
-        
+        view.addSubview(logTableView)
         installConstraints()
-        
-        tableView.separatorStyle = .none
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.register(TableViewCell.self, forCellReuseIdentifier: "Cell")
     }
 
     func installConstraints() {
-        
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        tableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        
+        logTableView.translatesAutoresizingMaskIntoConstraints = false
+        logTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        logTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        logTableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        logTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
     }
-
 }
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
@@ -47,14 +44,11 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 240
     }
-    
-    
 }
 

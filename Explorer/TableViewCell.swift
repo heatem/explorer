@@ -10,17 +10,16 @@ import UIKit
 
 class TableViewCell: UITableViewCell {
     
-    // MARK: Background ImageView
+    // Background ImageView
     let bgImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.image = UIImage(named: "ScreenshotGoogleMaps")
         imageView.clipsToBounds = true
-        // TODO: Scale image to fit a cell size
         return imageView
     }()
     
-    // MARK: "Buddies" label
+    // "Buddies" label
     let buddiesLabel: UILabel = {
         let label = UILabel()
         label.textColor = .darkGray
@@ -29,7 +28,7 @@ class TableViewCell: UITableViewCell {
         return label
     }()
     
-    // TODO: Buddies icons
+    // Buddies icons
     let buddyView: UIView = {
         let view = UIView()
         
@@ -44,51 +43,51 @@ class TableViewCell: UITableViewCell {
         return view
     }()
     
-    // MARK: "Duration" label
+    // "Duration" label
     let durationLabel: UILabel = {
         let label = UILabel()
         label.textColor = .black
-        label.textAlignment = NSTextAlignment.right
+        label.textAlignment = .right
         label.font = UIFont(name: "Roboto-Regular", size: 18)
         label.text = "DURATION"
         return label
     }()
     
-    // MARK: Duration value label
+    // Duration value label
     let durationValueLabel: UILabel = {
         let label = UILabel()
         label.textColor = .black
-        label.textAlignment = NSTextAlignment.right
+        label.textAlignment = .right
         label.font = UIFont(name: "Roboto-Black", size: 20)
         label.text = "43min"
         return label
     }()
     
-    // MARK: "Depth" label
+    // "Depth" label
     let depthLabel: UILabel = {
         let label = UILabel()
         label.textColor = .black
-        label.textAlignment = NSTextAlignment.right
+        label.textAlignment = .right
         label.font = UIFont(name: "Roboto-Regular", size: 18)
         label.text = "DEPTH"
         return label
     }()
     
-    // MARK: Depth value label
+    // Depth value label
     let depthValueLabel: UILabel = {
         let label = UILabel()
         label.textColor = .black
-        label.textAlignment = NSTextAlignment.right
+        label.textAlignment = .right
         label.font = UIFont(name: "Roboto-Black", size: 20)
         label.text = "41ft"
         return label
     }()
     
-    // MARK: User icon
+    // User icon
     let userIconLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: "Roboto-Regular", size: 24)
-        label.textAlignment = NSTextAlignment.center
+        label.textAlignment = .center
         label.textColor = .white
         label.layer.backgroundColor = UIColor.brown.cgColor
         label.layer.cornerRadius = 24
@@ -96,7 +95,7 @@ class TableViewCell: UITableViewCell {
         return label
     }()
     
-    // MARK: Username
+    // Username
     let usernameLabel: UILabel = {
         let label = UILabel()
         label.textColor = .darkGray
@@ -105,12 +104,12 @@ class TableViewCell: UITableViewCell {
         return label
     }()
     
-    // MARK: Timestamp
+    // Timestamp
     let timestampLabel: UILabel = {
         let label = UILabel()
         label.textColor = .darkGray
         label.font = UIFont(name: "Roboto-Regular", size: 12)
-        label.textAlignment = NSTextAlignment.right
+        label.textAlignment = .right
         label.text = "Thursday, July 24, 2015 at 10:15am"
         return label
     }()
@@ -118,19 +117,18 @@ class TableViewCell: UITableViewCell {
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        self.addSubview(bgImageView)
-        self.addSubview(buddiesLabel)
-        self.addSubview(buddyView)
-        self.addSubview(durationLabel)
-        self.addSubview(durationValueLabel)
-        self.addSubview(depthLabel)
-        self.addSubview(depthValueLabel)
-        self.addSubview(userIconLabel)
-        self.addSubview(usernameLabel)
-        self.addSubview(timestampLabel)
+        contentView.addSubview(bgImageView)
+        contentView.addSubview(buddiesLabel)
+        contentView.addSubview(buddyView)
+        contentView.addSubview(durationLabel)
+        contentView.addSubview(durationValueLabel)
+        contentView.addSubview(depthLabel)
+        contentView.addSubview(depthValueLabel)
+        contentView.addSubview(userIconLabel)
+        contentView.addSubview(usernameLabel)
+        contentView.addSubview(timestampLabel)
         
         installConstraints()
-        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -198,5 +196,4 @@ class TableViewCell: UITableViewCell {
         timestampLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12).isActive = true
         timestampLabel.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.6).isActive = true
     }
-
 }
