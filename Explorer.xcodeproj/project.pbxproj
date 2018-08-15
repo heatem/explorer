@@ -10,6 +10,7 @@
 		AE4C6F5F21210ADD00F6FFC9 /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AE4C6F5C21210ADC00F6FFC9 /* Roboto-Thin.ttf */; };
 		AE4C6F6021210ADD00F6FFC9 /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AE4C6F5D21210ADD00F6FFC9 /* Roboto-Black.ttf */; };
 		AE4C6F6121210ADD00F6FFC9 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AE4C6F5E21210ADD00F6FFC9 /* Roboto-Regular.ttf */; };
+		AE6FC8D02123880500F4B48A /* DiveLogViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6FC8CF2123880500F4B48A /* DiveLogViewModel.swift */; };
 		AEB697B0211E960800CB8F3C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB697AF211E960800CB8F3C /* AppDelegate.swift */; };
 		AEB697B2211E960800CB8F3C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB697B1211E960800CB8F3C /* ViewController.swift */; };
 		AEB697B5211E960800CB8F3C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEB697B3211E960800CB8F3C /* Main.storyboard */; };
@@ -18,6 +19,8 @@
 		AEB697C5211E960900CB8F3C /* ExplorerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB697C4211E960900CB8F3C /* ExplorerTests.swift */; };
 		AEB697D0211E960900CB8F3C /* ExplorerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB697CF211E960900CB8F3C /* ExplorerUITests.swift */; };
 		AEB697DE211EAE1600CB8F3C /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB697DD211EAE1600CB8F3C /* TableViewCell.swift */; };
+		AEECF4A121227F4600AE6314 /* DiveLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEECF4A021227F4600AE6314 /* DiveLog.swift */; };
+		AEECF4A3212288F200AE6314 /* RandomDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEECF4A2212288F200AE6314 /* RandomDate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +44,7 @@
 		AE4C6F5C21210ADC00F6FFC9 /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
 		AE4C6F5D21210ADD00F6FFC9 /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Black.ttf"; sourceTree = "<group>"; };
 		AE4C6F5E21210ADD00F6FFC9 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
+		AE6FC8CF2123880500F4B48A /* DiveLogViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiveLogViewModel.swift; sourceTree = "<group>"; };
 		AEB697AC211E960800CB8F3C /* Explorer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Explorer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEB697AF211E960800CB8F3C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AEB697B1211E960800CB8F3C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -55,6 +59,8 @@
 		AEB697CF211E960900CB8F3C /* ExplorerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExplorerUITests.swift; sourceTree = "<group>"; };
 		AEB697D1211E960900CB8F3C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AEB697DD211EAE1600CB8F3C /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		AEECF4A021227F4600AE6314 /* DiveLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiveLog.swift; sourceTree = "<group>"; };
+		AEECF4A2212288F200AE6314 /* RandomDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomDate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +129,9 @@
 				AEB697B6211E960800CB8F3C /* Assets.xcassets */,
 				AEB697B8211E960800CB8F3C /* LaunchScreen.storyboard */,
 				AEB697BB211E960900CB8F3C /* Info.plist */,
+				AEECF4A021227F4600AE6314 /* DiveLog.swift */,
+				AEECF4A2212288F200AE6314 /* RandomDate.swift */,
+				AE6FC8CF2123880500F4B48A /* DiveLogViewModel.swift */,
 			);
 			path = Explorer;
 			sourceTree = "<group>";
@@ -279,7 +288,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AEECF4A121227F4600AE6314 /* DiveLog.swift in Sources */,
+				AE6FC8D02123880500F4B48A /* DiveLogViewModel.swift in Sources */,
 				AEB697DE211EAE1600CB8F3C /* TableViewCell.swift in Sources */,
+				AEECF4A3212288F200AE6314 /* RandomDate.swift in Sources */,
 				AEB697B2211E960800CB8F3C /* ViewController.swift in Sources */,
 				AEB697B0211E960800CB8F3C /* AppDelegate.swift in Sources */,
 			);
