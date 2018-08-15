@@ -10,6 +10,8 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    var diveLogs = [DiveLog]()
+    
     lazy var logTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.separatorStyle = .none
@@ -26,6 +28,9 @@ class ViewController: UIViewController {
         self.navigationController?.navigationBar.isTranslucent = false
         view.addSubview(logTableView)
         installConstraints()
+        generateDiveLogs()
+        let diveLogsView = viewModelsFrom(dataModels: diveLogs)
+        print(diveLogsView)
     }
 
     func installConstraints() {
@@ -34,6 +39,28 @@ class ViewController: UIViewController {
         logTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         logTableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         logTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+    }
+    
+    func generateDiveLogs() {
+        for n in 1...21 {
+            let date = getRandomDate()
+            let offset = getRandomOffset(date: date!)
+            let location = ["St. Croix", "Miami", "Phoenix Lake", "Kerr Lake", "Great Barrier Reef", "Burmuda Triangle"]
+            let notes = ["", "a short note", "a pretty long note describing the dive and something notable about it. Maybe there was a shark. Maybe there was a turtle with a straw in it's nose?"]
+            let entry = [EntryType.boat, EntryType.shore]
+            let water = [WaterType.fresh, WaterType.salt]
+            
+            diveLogs.append(DiveLog(diveNumber: n, date: date!, depth: Int(arc4random_uniform(100)), location: location[Int(arc4random_uniform(UInt32(location.count)))], entryType: entry[Int(arc4random_uniform(UInt32(entry.count)))], waterType: water[Int(arc4random_uniform(UInt32(water.count)))], timeIn: date!, timeOut: offset!, notes: notes[Int(arc4random_uniform(UInt32(notes.count)))], userFullName: "D Burke", userID: "dburke", userIcon: "DB"))
+        }
+    }
+    
+    func viewModelsFrom(dataModels: [DiveLog]) -> [DiveLogViewModel] {
+        var diveLogsView = [DiveLogViewModel]()
+        for diveLog in diveLogs {
+            let viewModel = DiveLogViewModel(diveLog: diveLog)
+            diveLogsView.append(viewModel)
+        }
+        return diveLogsView
     }
 }
 
