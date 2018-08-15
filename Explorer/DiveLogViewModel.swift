@@ -29,6 +29,6 @@ struct DiveLogViewModel {
         self.duration = Int(diveLog.timeOut.timeIntervalSince(diveLog.timeIn))
         self.userFullName = diveLog.userFullName
         self.userID = diveLog.userID
-        self.userIcon = diveLog.userID
+        self.userIcon = diveLog.userIcon
     }
 }

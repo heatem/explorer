@@ -29,7 +29,7 @@ class ViewController: UIViewController {
         view.addSubview(logTableView)
         installConstraints()
         generateDiveLogs()
-        generateDiveLogViewModels()
+        let diveLogsView = viewModelsFrom(dataModels: diveLogs)
         print(diveLogsView)
     }
 
@@ -54,13 +54,13 @@ class ViewController: UIViewController {
         }
     }
     
-    var diveLogsView = [DiveLogViewModel]()
-    
-    func generateDiveLogViewModels() {
-        for dives in diveLogs {
-            let viewModel = DiveLogViewModel(diveLog: dives)
+    func viewModelsFrom(dataModels: [DiveLog]) -> [DiveLogViewModel] {
+        var diveLogsView = [DiveLogViewModel]()
+        for diveLog in diveLogs {
+            let viewModel = DiveLogViewModel(diveLog: diveLog)
             diveLogsView.append(viewModel)
         }
+        return diveLogsView
     }
 }
 
