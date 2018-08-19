@@ -22,30 +22,17 @@ class ExplorerTests: XCTestCase {
     }
     
     func testInitDiveLogViewModel() {
-        var dateComponents = DateComponents()
-        dateComponents.year = 2017
-        dateComponents.month = 02
-        dateComponents.day = 28
-        dateComponents.timeZone = TimeZone(abbreviation: "PST")
-        dateComponents.hour = 13
-        dateComponents.minute = 38
-        
-        let userCalendar = Calendar.current
-        let date = userCalendar.date(from: dateComponents)
-        
-        let timeOut = date!.addingTimeInterval(1800)
-        
-        let timeOutDate = userCalendar.date(from: timeOutDateComponents)
+        let times = datesSeparated(by: 1800)
         
         let diveLog = DiveLog(
             diveNumber: 1,
-            date: date!,
+            date: times.0,
             depth: 12,
             location: "North Shore, HI",
             entryType: .boat,
             waterType: .salt,
-            timeIn: date!,
-            timeOut: timeOut,
+            timeIn: times.0,
+            timeOut: times.1,
             notes: "This is a test",
             userFullName: "H Mason",
             userID: "hm",
@@ -55,5 +42,21 @@ class ExplorerTests: XCTestCase {
         
         XCTAssertEqual(diveLogViewModel.date, "Tuesday, February 28, 2017 at 1:38 PM")
         XCTAssertEqual(diveLogViewModel.duration, 30)
+    }
+    
+    func datesSeparated(by duration: Double) -> (Date, Date) {
+        var dateComponents = DateComponents()
+        dateComponents.year = 2017
+        dateComponents.month = 02
+        dateComponents.day = 28
+        dateComponents.timeZone = TimeZone(abbreviation: "PST")
+        dateComponents.hour = 13
+        dateComponents.minute = 38
+        
+        let userCalendar = Calendar.current
+        let timeIn = userCalendar.date(from: dateComponents)!
+        let timeOut = timeIn.addingTimeInterval(duration)
+        
+        return (timeIn, timeOut)
     }
 }
