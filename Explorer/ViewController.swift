@@ -66,11 +66,16 @@ class ViewController: UIViewController {
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return diveLogs.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        let cell: TableViewCell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! TableViewCell
+        
+        cell.diveLogView.durationValueLabel.text = "\(String(DiveLogViewModel(diveLog: diveLogs[indexPath.row]).duration)) min"
+        cell.diveLogView.depthValueLabel.text = "\(String(DiveLogViewModel(diveLog: diveLogs[indexPath.row]).depth)) ft"
+        cell.diveLogView.timestampLabel.text = String(DiveLogViewModel(diveLog: diveLogs[indexPath.row]).date)
+        
         return cell
     }
     
