@@ -26,7 +26,7 @@ struct DiveLogViewModel {
         
         self.date = dateFormatter.string(from: diveLog.date) + " at " + timeFormatter.string(from: diveLog.date)
         self.depth = diveLog.depth
-        self.duration = Int(diveLog.timeOut.timeIntervalSince(diveLog.timeIn))
+        self.duration = Int(diveLog.timeOut.timeIntervalSince(diveLog.timeIn) / 60)
         self.userFullName = diveLog.userFullName
         self.userID = diveLog.userID
         self.userIcon = diveLog.userIcon
