@@ -21,7 +21,7 @@ struct DiveLogViewModel {
         // create dateformatter
         let dateFormatter = DateFormatter()
         let timeFormatter = DateFormatter()
-        dateFormatter.dateFormat = "EEEE, MMMM d, yyyy"
+        dateFormatter.dateFormat = "EE, MMMM d, yyyy"
         timeFormatter.dateFormat = "h:m a"
         
         self.date = dateFormatter.string(from: diveLog.date) + " at " + timeFormatter.string(from: diveLog.date)
