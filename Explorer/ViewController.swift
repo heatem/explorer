@@ -71,10 +71,13 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: TableViewCell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! TableViewCell
+        let diveLogForRowAtIndexPath = DiveLogViewModel(diveLog: diveLogs[indexPath.row])
         
-        cell.diveLogView.durationValueLabel.text = "\(String(DiveLogViewModel(diveLog: diveLogs[indexPath.row]).duration)) min"
-        cell.diveLogView.depthValueLabel.text = "\(String(DiveLogViewModel(diveLog: diveLogs[indexPath.row]).depth)) ft"
-        cell.diveLogView.timestampLabel.text = String(DiveLogViewModel(diveLog: diveLogs[indexPath.row]).date)
+        cell.diveLogView.durationValueLabel.text = "\(String(diveLogForRowAtIndexPath.duration)) min"
+        cell.diveLogView.depthValueLabel.text = "\(String(diveLogForRowAtIndexPath.depth)) ft"
+        cell.diveLogView.timestampLabel.text = diveLogForRowAtIndexPath.date
+        cell.diveLogView.usernameLabel.text = diveLogForRowAtIndexPath.userID
+        cell.diveLogView.userIconLabel.text = diveLogForRowAtIndexPath.userIcon
         
         return cell
     }
