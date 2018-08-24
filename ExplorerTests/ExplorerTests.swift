@@ -40,8 +40,9 @@ class ExplorerTests: XCTestCase {
         
         let diveLogViewModel = DiveLogViewModel(diveLog: diveLog)
         
-        XCTAssertEqual(diveLogViewModel.date, "Tuesday, February 28, 2017 at 1:38 PM")
+        XCTAssertEqual(diveLogViewModel.date, "Tue, February 28, 2017 at 1:38 PM")
         XCTAssertEqual(diveLogViewModel.duration, "30 min")
+        XCTAssertEqual(diveLogViewModel.depth, "12 ft")
     }
     
     func datesSeparated(by duration: Double) -> (Date, Date) {
