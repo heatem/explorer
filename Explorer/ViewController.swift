@@ -50,7 +50,7 @@ class ViewController: UIViewController {
             let entry = [EntryType.boat, EntryType.shore]
             let water = [WaterType.fresh, WaterType.salt]
             
-            diveLogs.append(DiveLog(diveNumber: n, date: date!, depth: Int(arc4random_uniform(100)), location: location[Int(arc4random_uniform(UInt32(location.count)))], entryType: entry[Int(arc4random_uniform(UInt32(entry.count)))], waterType: water[Int(arc4random_uniform(UInt32(water.count)))], timeIn: date!, timeOut: offset!, notes: notes[Int(arc4random_uniform(UInt32(notes.count)))], userFullName: "D Burke", userID: "dburke", userIcon: "DB"))
+            diveLogs.append(DiveLog(diveNumber: n, date: date!, depth: Int(arc4random_uniform(100)), location: location[Int(arc4random_uniform(UInt32(location.count)))], entryType: entry[Int(arc4random_uniform(UInt32(entry.count)))], waterType: water[Int(arc4random_uniform(UInt32(water.count)))], timeIn: date!, timeOut: offset!, notes: notes[Int(arc4random_uniform(UInt32(notes.count)))], userFullName: "D Burke", username: "dburke", userIcon: "DB"))
         }
     }
     
@@ -73,10 +73,10 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         let cell: TableViewCell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! TableViewCell
         let diveLogForRowAtIndexPath = DiveLogViewModel(diveLog: diveLogs[indexPath.row])
         
-        cell.diveLogView.durationValueLabel.text = "\(String(diveLogForRowAtIndexPath.duration)) min"
-        cell.diveLogView.depthValueLabel.text = "\(String(diveLogForRowAtIndexPath.depth)) ft"
+        cell.diveLogView.durationValueLabel.text = diveLogForRowAtIndexPath.duration
+        cell.diveLogView.depthValueLabel.text = diveLogForRowAtIndexPath.depth
         cell.diveLogView.timestampLabel.text = diveLogForRowAtIndexPath.date
-        cell.diveLogView.usernameLabel.text = diveLogForRowAtIndexPath.userID
+        cell.diveLogView.usernameLabel.text = diveLogForRowAtIndexPath.username
         cell.diveLogView.userIconLabel.text = diveLogForRowAtIndexPath.userIcon
         
         return cell

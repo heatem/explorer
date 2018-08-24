@@ -31,6 +31,6 @@ struct DiveLog {
     
     // TODO: Move to `User` model
     let userFullName: String
-    let userID: String
+    let username: String
     let userIcon: String
 }

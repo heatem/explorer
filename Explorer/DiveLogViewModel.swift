@@ -10,10 +10,10 @@ import Foundation
 
 struct DiveLogViewModel {
     let date: String
-    let depth: Int
-    let duration: Int
+    let depth: String
+    let duration: String
     let userFullName: String
-    let userID: String
+    let username: String
     let userIcon: String
     
     init(diveLog: DiveLog){
@@ -24,11 +24,11 @@ struct DiveLogViewModel {
         dateFormatter.dateFormat = "EE, MMMM d, yyyy"
         timeFormatter.dateFormat = "h:m a"
         
-        self.date = dateFormatter.string(from: diveLog.date) + " at " + timeFormatter.string(from: diveLog.date)
-        self.depth = diveLog.depth
-        self.duration = Int(diveLog.timeOut.timeIntervalSince(diveLog.timeIn) / 60)
+        self.date = "\(dateFormatter.string(from: diveLog.date)) at \(timeFormatter.string(from: diveLog.date))"
+        self.depth = "\(String(diveLog.depth)) ft"
+        self.duration = "\(String(Int(diveLog.timeOut.timeIntervalSince(diveLog.timeIn) / 60))) min"
         self.userFullName = diveLog.userFullName
-        self.userID = diveLog.userID
+        self.username = diveLog.username
         self.userIcon = diveLog.userIcon
     }
 }
