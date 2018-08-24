@@ -11,7 +11,6 @@
 		AE4C6F6021210ADD00F6FFC9 /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AE4C6F5D21210ADD00F6FFC9 /* Roboto-Black.ttf */; };
 		AE4C6F6121210ADD00F6FFC9 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AE4C6F5E21210ADD00F6FFC9 /* Roboto-Regular.ttf */; };
 		AE6FC8D02123880500F4B48A /* DiveLogViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6FC8CF2123880500F4B48A /* DiveLogViewModel.swift */; };
-		AE7853CD212E540D001495CF /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7853CC212E540D001495CF /* User.swift */; };
 		AEB697B0211E960800CB8F3C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB697AF211E960800CB8F3C /* AppDelegate.swift */; };
 		AEB697B2211E960800CB8F3C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB697B1211E960800CB8F3C /* ViewController.swift */; };
 		AEB697B5211E960800CB8F3C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEB697B3211E960800CB8F3C /* Main.storyboard */; };
@@ -47,7 +46,6 @@
 		AE4C6F5D21210ADD00F6FFC9 /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Black.ttf"; sourceTree = "<group>"; };
 		AE4C6F5E21210ADD00F6FFC9 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		AE6FC8CF2123880500F4B48A /* DiveLogViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiveLogViewModel.swift; sourceTree = "<group>"; };
-		AE7853CC212E540D001495CF /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		AEB697AC211E960800CB8F3C /* Explorer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Explorer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEB697AF211E960800CB8F3C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AEB697B1211E960800CB8F3C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -137,7 +135,6 @@
 				AEECF4A2212288F200AE6314 /* RandomDate.swift */,
 				AE6FC8CF2123880500F4B48A /* DiveLogViewModel.swift */,
 				AED3EF6F212B5938006FD052 /* DiveLogView.swift */,
-				AE7853CC212E540D001495CF /* User.swift */,
 			);
 			path = Explorer;
 			sourceTree = "<group>";
@@ -298,7 +295,6 @@
 				AE6FC8D02123880500F4B48A /* DiveLogViewModel.swift in Sources */,
 				AEB697DE211EAE1600CB8F3C /* TableViewCell.swift in Sources */,
 				AEECF4A3212288F200AE6314 /* RandomDate.swift in Sources */,
-				AE7853CD212E540D001495CF /* User.swift in Sources */,
 				AEB697B2211E960800CB8F3C /* ViewController.swift in Sources */,
 				AED3EF70212B5938006FD052 /* DiveLogView.swift in Sources */,
 				AEB697B0211E960800CB8F3C /* AppDelegate.swift in Sources */,
