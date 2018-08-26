@@ -68,7 +68,7 @@ class ExplorerTests: XCTestCase {
         XCTAssertEqual(diveLogViewModel.depth, "12 ft")
         XCTAssertEqual(diveLogViewModel.userFullName, "Sylvia Earle")
         XCTAssertEqual(diveLogViewModel.username, "sylle")
-        XCTAssertEqual(diveLogViewModel.userIcon, URL(string: "https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwiZlbO-7IvdAhWim-AKHZdyCR8QjRx6BAgBEAU&url=https%3A%2F%2Fwww.channel4.com%2Fnews%2Fsylvia-earle-americas-female-aquanaut&psig=AOvVaw2znAtWUr8eijopTeKlNuOw&ust=1535411695311594"))
+        XCTAssertEqual(diveLogViewModel.userIcon, URL(string: "https://fournews-assets-prod-s3-ew1-nmprod.s3.amazonaws.com/media/2017/12/4ON_EARLE_PAB_0312_TempThumbnail1920x1080.jpg"))
     }
     
     func datesSeparated(by duration: Double) -> (Date, Date) {

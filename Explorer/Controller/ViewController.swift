@@ -51,7 +51,7 @@ class ViewController: UIViewController {
             let notes = ["", "a short note", "a pretty long note describing the dive and something notable about it. Maybe there was a shark. Maybe there was a turtle with a straw in it's nose?"]
             let entry = [EntryType.boat, EntryType.shore]
             let water = [WaterType.fresh, WaterType.salt]
-            let user = User(fullName: "Heather Mason", username: "hmason", icon: "")
+            let user = User(fullName: "Sylvia Earle", username: "sylle", icon: "https://fournews-assets-prod-s3-ew1-nmprod.s3.amazonaws.com/media/2017/12/4ON_EARLE_PAB_0312_TempThumbnail1920x1080.jpg")
             
             diveLogs.append(DiveLog(diveNumber: n, date: date!, depth: Int(arc4random_uniform(100)), location: location[Int(arc4random_uniform(UInt32(location.count)))], entryType: entry[Int(arc4random_uniform(UInt32(entry.count)))], waterType: water[Int(arc4random_uniform(UInt32(water.count)))], timeIn: date!, timeOut: offset!, notes: notes[Int(arc4random_uniform(UInt32(notes.count)))], user: user))
         }
