@@ -21,7 +21,7 @@ class ExplorerTests: XCTestCase {
         super.tearDown()
     }
     
-    func testInitDiveLogViewModel() {
+    func testInitDiveLogViewModel_WithNilImage() {
         let times = datesSeparated(by: 1800)
         
         let diveLog = DiveLog(
@@ -34,15 +34,41 @@ class ExplorerTests: XCTestCase {
             timeIn: times.0,
             timeOut: times.1,
             notes: "This is a test",
-            userFullName: "H Mason",
-            username: "hm",
-            userIcon: "HM")
+            user: User(fullName: "Eli Mason", username: "elim", icon: nil))
         
         let diveLogViewModel = DiveLogViewModel(diveLog: diveLog)
         
         XCTAssertEqual(diveLogViewModel.date, "Tue, February 28, 2017 at 1:38 PM")
         XCTAssertEqual(diveLogViewModel.duration, "30 min")
         XCTAssertEqual(diveLogViewModel.depth, "12 ft")
+        XCTAssertEqual(diveLogViewModel.userFullName, "Eli Mason")
+        XCTAssertEqual(diveLogViewModel.username, "elim")
+        XCTAssertEqual(diveLogViewModel.userIcon, nil)
+    }
+    
+    func testInitDiveLogViewModel_WithValidIconURL() {
+        let times = datesSeparated(by: 1800)
+        
+        let diveLog = DiveLog(
+            diveNumber: 1,
+            date: times.0,
+            depth: 12,
+            location: "North Shore, HI",
+            entryType: .boat,
+            waterType: .salt,
+            timeIn: times.0,
+            timeOut: times.1,
+            notes: "This is a test",
+            user: User(fullName: "Sylvia Earle", username: "sylle", icon: "https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwiZlbO-7IvdAhWim-AKHZdyCR8QjRx6BAgBEAU&url=https%3A%2F%2Fwww.channel4.com%2Fnews%2Fsylvia-earle-americas-female-aquanaut&psig=AOvVaw2znAtWUr8eijopTeKlNuOw&ust=1535411695311594"))
+        
+        let diveLogViewModel = DiveLogViewModel(diveLog: diveLog)
+        
+        XCTAssertEqual(diveLogViewModel.date, "Tue, February 28, 2017 at 1:38 PM")
+        XCTAssertEqual(diveLogViewModel.duration, "30 min")
+        XCTAssertEqual(diveLogViewModel.depth, "12 ft")
+        XCTAssertEqual(diveLogViewModel.userFullName, "Sylvia Earle")
+        XCTAssertEqual(diveLogViewModel.username, "sylle")
+        XCTAssertEqual(diveLogViewModel.userIcon, URL(string: "https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwiZlbO-7IvdAhWim-AKHZdyCR8QjRx6BAgBEAU&url=https%3A%2F%2Fwww.channel4.com%2Fnews%2Fsylvia-earle-americas-female-aquanaut&psig=AOvVaw2znAtWUr8eijopTeKlNuOw&ust=1535411695311594"))
     }
     
     func datesSeparated(by duration: Double) -> (Date, Date) {

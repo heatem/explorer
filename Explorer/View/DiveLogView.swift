@@ -84,15 +84,12 @@ class DiveLogView: UIView {
     }()
     
     // User icon
-    let userIconLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont(name: "Roboto-Regular", size: 24)
-        label.textAlignment = .center
-        label.textColor = .white
-        label.layer.backgroundColor = UIColor.brown.cgColor
-        label.layer.cornerRadius = 24
-        label.text = "DB"
-        return label
+    let iconImageView: UIImageView = {
+        let imageView = UIImageView(image: #imageLiteral(resourceName: "defaultUserIcon"))
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
+        imageView.layer.cornerRadius = 24
+        return imageView
     }()
     
     // Username
@@ -124,7 +121,7 @@ class DiveLogView: UIView {
         addSubview(durationValueLabel)
         addSubview(depthLabel)
         addSubview(depthValueLabel)
-        addSubview(userIconLabel)
+        addSubview(iconImageView)
         addSubview(usernameLabel)
         addSubview(timestampLabel)
         
@@ -178,16 +175,16 @@ class DiveLogView: UIView {
         depthValueLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12).isActive = true
         depthValueLabel.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.5).isActive = true
         
-        userIconLabel.translatesAutoresizingMaskIntoConstraints = false
-        userIconLabel.topAnchor.constraint(equalTo: bgImageView.bottomAnchor, constant: -24).isActive = true
-        userIconLabel.heightAnchor.constraint(equalToConstant: 48).isActive = true
-        userIconLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12).isActive = true
-        userIconLabel.widthAnchor.constraint(equalToConstant: 48).isActive = true
+        iconImageView.translatesAutoresizingMaskIntoConstraints = false
+        iconImageView.topAnchor.constraint(equalTo: bgImageView.bottomAnchor, constant: -24).isActive = true
+        iconImageView.heightAnchor.constraint(equalToConstant: 48).isActive = true
+        iconImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12).isActive = true
+        iconImageView.widthAnchor.constraint(equalToConstant: 48).isActive = true
         
         usernameLabel.translatesAutoresizingMaskIntoConstraints = false
         usernameLabel.topAnchor.constraint(equalTo: bgImageView.bottomAnchor, constant: 4).isActive = true
         usernameLabel.heightAnchor.constraint(equalToConstant: 12).isActive = true
-        usernameLabel.leadingAnchor.constraint(equalTo: userIconLabel.trailingAnchor, constant: 4).isActive = true
+        usernameLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: 4).isActive = true
         usernameLabel.widthAnchor.constraint(equalTo: widthAnchor, constant: 0.4).isActive = true
         
         timestampLabel.translatesAutoresizingMaskIntoConstraints = false

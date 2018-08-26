@@ -28,9 +28,5 @@ struct DiveLog {
     let timeIn: Date
     let timeOut: Date
     let notes: String?
-    
-    // TODO: Move to `User` model
-    let userFullName: String
-    let username: String
-    let userIcon: String
+    let user: User
 }

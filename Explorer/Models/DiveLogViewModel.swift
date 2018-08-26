@@ -14,7 +14,7 @@ struct DiveLogViewModel {
     let duration: String
     let userFullName: String
     let username: String
-    let userIcon: String
+    let userIcon: URL?
     
     init(diveLog: DiveLog){
         
@@ -27,8 +27,12 @@ struct DiveLogViewModel {
         self.date = "\(dateFormatter.string(from: diveLog.date)) at \(timeFormatter.string(from: diveLog.date))"
         self.depth = "\(String(diveLog.depth)) ft"
         self.duration = "\(String(Int(diveLog.timeOut.timeIntervalSince(diveLog.timeIn) / 60))) min"
-        self.userFullName = diveLog.userFullName
-        self.username = diveLog.username
-        self.userIcon = diveLog.userIcon
+        self.userFullName = diveLog.user.fullName
+        self.username = diveLog.user.username
+        if let validUserIcon = diveLog.user.icon {
+            self.userIcon = URL(string: validUserIcon)
+        } else {
+            self.userIcon = nil
+        }
     }
 }

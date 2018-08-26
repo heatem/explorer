@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Alamofire
+import AlamofireImage
 
 class ViewController: UIViewController {
     
@@ -49,8 +51,9 @@ class ViewController: UIViewController {
             let notes = ["", "a short note", "a pretty long note describing the dive and something notable about it. Maybe there was a shark. Maybe there was a turtle with a straw in it's nose?"]
             let entry = [EntryType.boat, EntryType.shore]
             let water = [WaterType.fresh, WaterType.salt]
+            let user = User(fullName: "Heather Mason", username: "hmason", icon: "")
             
-            diveLogs.append(DiveLog(diveNumber: n, date: date!, depth: Int(arc4random_uniform(100)), location: location[Int(arc4random_uniform(UInt32(location.count)))], entryType: entry[Int(arc4random_uniform(UInt32(entry.count)))], waterType: water[Int(arc4random_uniform(UInt32(water.count)))], timeIn: date!, timeOut: offset!, notes: notes[Int(arc4random_uniform(UInt32(notes.count)))], userFullName: "D Burke", username: "dburke", userIcon: "DB"))
+            diveLogs.append(DiveLog(diveNumber: n, date: date!, depth: Int(arc4random_uniform(100)), location: location[Int(arc4random_uniform(UInt32(location.count)))], entryType: entry[Int(arc4random_uniform(UInt32(entry.count)))], waterType: water[Int(arc4random_uniform(UInt32(water.count)))], timeIn: date!, timeOut: offset!, notes: notes[Int(arc4random_uniform(UInt32(notes.count)))], user: user))
         }
     }
     
@@ -71,13 +74,15 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: TableViewCell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! TableViewCell
-        let diveLogForRowAtIndexPath = DiveLogViewModel(diveLog: diveLogs[indexPath.row])
+        let viewModel = DiveLogViewModel(diveLog: diveLogs[indexPath.row])
         
-        cell.diveLogView.durationValueLabel.text = diveLogForRowAtIndexPath.duration
-        cell.diveLogView.depthValueLabel.text = diveLogForRowAtIndexPath.depth
-        cell.diveLogView.timestampLabel.text = diveLogForRowAtIndexPath.date
-        cell.diveLogView.usernameLabel.text = diveLogForRowAtIndexPath.username
-        cell.diveLogView.userIconLabel.text = diveLogForRowAtIndexPath.userIcon
+        cell.diveLogView.durationValueLabel.text = viewModel.duration
+        cell.diveLogView.depthValueLabel.text = viewModel.depth
+        cell.diveLogView.timestampLabel.text = viewModel.date
+        cell.diveLogView.usernameLabel.text = viewModel.username
+        if let url = viewModel.userIcon {
+            cell.diveLogView.iconImageView.af_setImage(withURL: url)
+        }
         
         return cell
     }
