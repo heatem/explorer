@@ -32,7 +32,7 @@ class ViewController: UIViewController {
         installConstraints()
         generateDiveLogs()
         let diveLogsView = viewModelsFrom(dataModels: diveLogs)
-        print(diveLogsView)
+        print(diveLogs)
     }
 
     func installConstraints() {
@@ -47,7 +47,7 @@ class ViewController: UIViewController {
         for n in 1...21 {
             let date = getRandomDate()
             let offset = getRandomOffset(date: date!)
-            let location = ["St. Croix", "Miami", "Phoenix Lake", "Kerr Lake", "Great Barrier Reef", "Burmuda Triangle"]
+            let location = [Location(name: "Annaly Bay Tide Pools", lat: 17.7628326, lon: -64.8478578), Location(name: "Biscayne Bay Aquatic Preserve", lat: 25.6615499, lon: -80.2495509), Location(name: "Phoenix Lake", lat: 36.949951, lon: -77.7666379), Location(name: "Great Barrier Reef Marine Park", lat: -16.8043402, lon: 145.1678168)]
             let notes = ["", "a short note", "a pretty long note describing the dive and something notable about it. Maybe there was a shark. Maybe there was a turtle with a straw in it's nose?"]
             let entry = [EntryType.boat, EntryType.shore]
             let water = [WaterType.fresh, WaterType.salt]
