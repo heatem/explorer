@@ -71,6 +71,19 @@ class ExplorerTests: XCTestCase {
         XCTAssertEqual(diveLogViewModel.userIcon, URL(string: "https://fournews-assets-prod-s3-ew1-nmprod.s3.amazonaws.com/media/2017/12/4ON_EARLE_PAB_0312_TempThumbnail1920x1080.jpg"))
     }
     
+    func testInitDiveLogViewModel_WithBuddies() {
+        let times = datesSeparated(by: 1800)
+        let diveLog = DiveLog(diveNumber: 1, date: times.0, depth: 14, location: "Great Barrier Reef", entryType: .boat, waterType: .salt, timeIn: times.0, timeOut: times.1, notes: nil, user: User(fullName: "Jacques Cousteau", username: "jacques", icon: "https://2016franceblog.files.wordpress.com/2016/10/cousteau.jpg"), buddies: [User(fullName: "Ocean Ramsey", username: "oramsey", icon: "http://www.wholelifetimes.com/wp-content/uploads/OceanRamsey-194x240.jpg"), User(fullName: "Victor Berge", username: "vberge", icon: "https://thumbs.worthpoint.com/zoom/images1/1/0113/09/original-wwii-usa-navy-victor-berge_1_ead28c39bfc74ebfb688c7af5f68a042.jpg")])
+        
+        XCTAssertEqual(diveLogViewModel.date, "Tue, February 28, 2017 at 1:38 PM")
+        XCTAssertEqual(diveLogViewModel.duration, "30 min")
+        XCTAssertEqual(diveLogViewModel.depth, "12 ft")
+        XCTAssertEqual(diveLogViewModel.userFullName, "Sylvia Earle")
+        XCTAssertEqual(diveLogViewModel.username, "sylle")
+        XCTAssertEqual(diveLogViewModel.userIcon, URL(string: "https://fournews-assets-prod-s3-ew1-nmprod.s3.amazonaws.com/media/2017/12/4ON_EARLE_PAB_0312_TempThumbnail1920x1080.jpg"))
+        XCTAssertEqual(diveLogViewModel.buddies, <#T##expression2: Equatable##Equatable#>)
+    }
+    
     func datesSeparated(by duration: Double) -> (Date, Date) {
         var dateComponents = DateComponents()
         dateComponents.year = 2017

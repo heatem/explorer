@@ -29,4 +29,5 @@ struct DiveLog {
     let timeOut: Date
     let notes: String?
     let user: User
+    let buddies: [User]?
 }

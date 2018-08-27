@@ -53,7 +53,7 @@ class ViewController: UIViewController {
             let water = [WaterType.fresh, WaterType.salt]
             let user = User(fullName: "Sylvia Earle", username: "sylle", icon: "https://fournews-assets-prod-s3-ew1-nmprod.s3.amazonaws.com/media/2017/12/4ON_EARLE_PAB_0312_TempThumbnail1920x1080.jpg")
             
-            diveLogs.append(DiveLog(diveNumber: n, date: date!, depth: Int(arc4random_uniform(100)), location: location[Int(arc4random_uniform(UInt32(location.count)))], entryType: entry[Int(arc4random_uniform(UInt32(entry.count)))], waterType: water[Int(arc4random_uniform(UInt32(water.count)))], timeIn: date!, timeOut: offset!, notes: notes[Int(arc4random_uniform(UInt32(notes.count)))], user: user))
+            diveLogs.append(DiveLog(diveNumber: n, date: date!, depth: Int(arc4random_uniform(100)), location: location[Int(arc4random_uniform(UInt32(location.count)))], entryType: entry[Int(arc4random_uniform(UInt32(entry.count)))], waterType: water[Int(arc4random_uniform(UInt32(water.count)))], timeIn: date!, timeOut: offset!, notes: notes[Int(arc4random_uniform(UInt32(notes.count)))], user: user, buddies: [User(fullName: "Ocean Ramsey", username: "oramsey", icon: "https://xcelwetsuits.eu/wp-content/uploads/2018/04/ocean-ramsey-wears-dolphin-uv-shirt.jpg"), User(fullName: "Victor Berge", username: "vberge", icon: "https://thumbs.worthpoint.com/zoom/images1/1/0113/09/original-wwii-usa-navy-victor-berge_1_ead28c39bfc74ebfb688c7af5f68a042.jpg"), User(fullName: "Jacques Cousteau", username: "jaco", icon: "https://img.purch.com/w/660/aHR0cDovL3d3dy5saXZlc2NpZW5jZS5jb20vaW1hZ2VzL2kvMDAwLzAwNS81MTcvb3JpZ2luYWwvamFjcXVlcy1jb3VzdGVhdS0xMDA2MTAtMDIuanBn")]))
         }
     }
     
@@ -76,13 +76,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         let cell: TableViewCell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! TableViewCell
         let viewModel = DiveLogViewModel(diveLog: diveLogs[indexPath.row])
         
-        cell.diveLogView.durationValueLabel.text = viewModel.duration
-        cell.diveLogView.depthValueLabel.text = viewModel.depth
-        cell.diveLogView.timestampLabel.text = viewModel.date
-        cell.diveLogView.usernameLabel.text = viewModel.username
-        if let url = viewModel.userIcon {
-            cell.diveLogView.iconImageView.af_setImage(withURL: url)
-        }
+        cell.configure(with: viewModel)
         
         return cell
     }

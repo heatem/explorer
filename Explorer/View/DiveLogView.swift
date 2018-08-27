@@ -32,13 +32,13 @@ class DiveLogView: UIView {
     let buddyView: UIView = {
         let view = UIView()
         
-        for n in 0...4 {
-            let frame = CGRect(x: n * 15, y: 0, width: 30, height: 30)
-            let buddyIconView = UIView(frame: frame)
-            buddyIconView.layer.cornerRadius = 15
-            buddyIconView.backgroundColor = .gray
-            view.addSubview(buddyIconView)
-        }
+//        for n in 0...4 {
+//            let frame = CGRect(x: n * 15, y: 0, width: 30, height: 30)
+//            let buddyIconView = UIView(frame: frame)
+//            buddyIconView.layer.cornerRadius = 15
+//            buddyIconView.backgroundColor = .gray
+//            view.addSubview(buddyIconView)
+//        }
         
         return view
     }()
