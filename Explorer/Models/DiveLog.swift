@@ -22,7 +22,7 @@ struct DiveLog {
     let diveNumber: Int
     let date: Date
     let depth: Int
-    let location: String
+    let location: Location
     let entryType: EntryType
     let waterType: WaterType
     let timeIn: Date

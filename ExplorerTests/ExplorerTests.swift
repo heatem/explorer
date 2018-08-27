@@ -28,7 +28,7 @@ class ExplorerTests: XCTestCase {
             diveNumber: 1,
             date: times.0,
             depth: 12,
-            location: "North Shore, HI",
+            location: Location(name: "Titanic", lat: 41.7325, lon: -49.946944),
             entryType: .boat,
             waterType: .salt,
             timeIn: times.0,
@@ -59,12 +59,13 @@ class ExplorerTests: XCTestCase {
             diveNumber: 1,
             date: times.0,
             depth: 12,
-            location: "North Shore, HI",
+            location: Location(name: "North Shore, HI", lat: 21.587356, lon: -158.1421087),
             entryType: .boat,
             waterType: .salt,
             timeIn: times.0,
             timeOut: times.1,
             notes: "This is a test",
+
             user: User(
                 fullName: "Sylvia Earle",
                 username: "sylle",
