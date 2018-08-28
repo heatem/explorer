@@ -40,7 +40,11 @@ class TableViewCell: UITableViewCell {
                 buddyIconView.clipsToBounds = true
                 buddyIconView.contentMode = .scaleAspectFill
                 buddyIconView.backgroundColor = .gray
-                buddyIconView.af_setImage(withURL: buddyIcon)
+                if let url = buddyIcon {
+                    buddyIconView.af_setImage(withURL: url)
+                } else {
+                    buddyIconView.image = #imageLiteral(resourceName: "defaultUserIcon")
+                }
                 diveLogView.buddyView.addSubview(buddyIconView)
             }
         }

@@ -15,7 +15,7 @@ struct DiveLogViewModel {
     let userFullName: String
     let username: String
     let userIcon: URL?
-    var buddyIcons: [URL]?
+    var buddyIcons: [URL?]?
     
     init(diveLog: DiveLog){
         
@@ -35,14 +35,13 @@ struct DiveLogViewModel {
         } else {
             self.userIcon = nil
         }
+        
         if diveLog.buddies != nil {
-            var buddyIconArray: [URL] = []
+            var buddyIconUrls = [URL?]()
             for buddy in diveLog.buddies! {
-                if let buddyIcon = buddy.icon {
-                    buddyIconArray.append(URL(string: buddyIcon)!)
-                }
+                buddyIconUrls.append(URL(string: buddy.icon ?? ""))
             }
-            self.buddyIcons = buddyIconArray
+            self.buddyIcons = buddyIconUrls
         } else {
             self.buddyIcons = nil
         }
