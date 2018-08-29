@@ -34,7 +34,13 @@ class ExplorerTests: XCTestCase {
             timeIn: times.0,
             timeOut: times.1,
             notes: "This is a test",
-            user: User(fullName: "Eli Mason", username: "elim", icon: nil))
+            user: User(
+                fullName: "Eli Mason",
+                username: "elim",
+                icon: nil
+            ),
+            buddies: nil
+        )
         
         let diveLogViewModel = DiveLogViewModel(diveLog: diveLog)
         
@@ -59,7 +65,13 @@ class ExplorerTests: XCTestCase {
             timeIn: times.0,
             timeOut: times.1,
             notes: "This is a test",
-            user: User(fullName: "Sylvia Earle", username: "sylle", icon: "https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwiZlbO-7IvdAhWim-AKHZdyCR8QjRx6BAgBEAU&url=https%3A%2F%2Fwww.channel4.com%2Fnews%2Fsylvia-earle-americas-female-aquanaut&psig=AOvVaw2znAtWUr8eijopTeKlNuOw&ust=1535411695311594"))
+            user: User(
+                fullName: "Sylvia Earle",
+                username: "sylle",
+                icon: "https://fournews-assets-prod-s3-ew1-nmprod.s3.amazonaws.com/media/2017/12/4ON_EARLE_PAB_0312_TempThumbnail1920x1080.jpg"
+            ),
+            buddies: nil
+        )
         
         let diveLogViewModel = DiveLogViewModel(diveLog: diveLog)
         
@@ -69,6 +81,90 @@ class ExplorerTests: XCTestCase {
         XCTAssertEqual(diveLogViewModel.userFullName, "Sylvia Earle")
         XCTAssertEqual(diveLogViewModel.username, "sylle")
         XCTAssertEqual(diveLogViewModel.userIcon, URL(string: "https://fournews-assets-prod-s3-ew1-nmprod.s3.amazonaws.com/media/2017/12/4ON_EARLE_PAB_0312_TempThumbnail1920x1080.jpg"))
+    }
+    
+    func testInitDiveLogViewModel_WithBuddies() {
+        let times = datesSeparated(by: 1800)
+        let diveLog = DiveLog(
+            diveNumber: 1,
+            date: times.0,
+            depth: 14,
+            location: "Great Barrier Reef",
+            entryType: .boat,
+            waterType: .salt,
+            timeIn: times.0,
+            timeOut: times.1,
+            notes: nil,
+            user: User(
+                fullName: "Jacques Cousteau",
+                username: "jacques",
+                icon: "https://2016franceblog.files.wordpress.com/2016/10/cousteau.jpg"
+            ),
+            buddies: [
+                User(
+                    fullName: "Ocean Ramsey",
+                    username: "oramsey",
+                    icon: "http://www.wholelifetimes.com/wp-content/uploads/OceanRamsey-194x240.jpg"
+                ),
+                User(
+                    fullName: "Victor Berge",
+                    username: "vberge",
+                    icon: "https://thumbs.worthpoint.com/zoom/images1/1/0113/09/original-wwii-usa-navy-victor-berge_1_ead28c39bfc74ebfb688c7af5f68a042.jpg"
+                )
+            ]
+        )
+        
+        let diveLogViewModel = DiveLogViewModel(diveLog: diveLog)
+        
+        XCTAssertEqual(diveLogViewModel.date, "Tue, February 28, 2017 at 1:38 PM")
+        XCTAssertEqual(diveLogViewModel.duration, "30 min")
+        XCTAssertEqual(diveLogViewModel.depth, "14 ft")
+        XCTAssertEqual(diveLogViewModel.userFullName, "Jacques Cousteau")
+        XCTAssertEqual(diveLogViewModel.username, "jacques")
+        XCTAssertEqual(diveLogViewModel.userIcon, URL(string: "https://2016franceblog.files.wordpress.com/2016/10/cousteau.jpg"))
+        XCTAssertEqual(diveLogViewModel.buddyIcons, [URL(string: "http://www.wholelifetimes.com/wp-content/uploads/OceanRamsey-194x240.jpg")!, URL(string: "https://thumbs.worthpoint.com/zoom/images1/1/0113/09/original-wwii-usa-navy-victor-berge_1_ead28c39bfc74ebfb688c7af5f68a042.jpg")!])
+    }
+    
+    func testInitDiveLogViewModel_WithBuddiesWithoutIcon() {
+        let times = datesSeparated(by: 1800)
+        let diveLog = DiveLog(
+            diveNumber: 1,
+            date: times.0,
+            depth: 14,
+            location: "Great Barrier Reef",
+            entryType: .boat,
+            waterType: .salt,
+            timeIn: times.0,
+            timeOut: times.1,
+            notes: nil,
+            user: User(
+                fullName: "Jacques Cousteau",
+                username: "jacques",
+                icon: "https://2016franceblog.files.wordpress.com/2016/10/cousteau.jpg"
+            ),
+            buddies: [
+                User(
+                    fullName: "Ocean Ramsey",
+                    username: "oramsey",
+                    icon: nil
+                ),
+                User(
+                    fullName: "Victor Berge",
+                    username: "vberge",
+                    icon: nil
+                )
+            ]
+        )
+        
+        let diveLogViewModel = DiveLogViewModel(diveLog: diveLog)
+        
+        XCTAssertEqual(diveLogViewModel.date, "Tue, February 28, 2017 at 1:38 PM")
+        XCTAssertEqual(diveLogViewModel.duration, "30 min")
+        XCTAssertEqual(diveLogViewModel.depth, "14 ft")
+        XCTAssertEqual(diveLogViewModel.userFullName, "Jacques Cousteau")
+        XCTAssertEqual(diveLogViewModel.username, "jacques")
+        XCTAssertEqual(diveLogViewModel.userIcon, URL(string: "https://2016franceblog.files.wordpress.com/2016/10/cousteau.jpg"))
+        XCTAssertEqual(diveLogViewModel.buddyIcons, [nil, nil])
     }
     
     func datesSeparated(by duration: Double) -> (Date, Date) {

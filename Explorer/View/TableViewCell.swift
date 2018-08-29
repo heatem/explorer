@@ -22,8 +22,40 @@ class TableViewCell: UITableViewCell {
         
     }
     
+    func configure(with viewModel: DiveLogViewModel) {
+        diveLogView.durationValueLabel.text = viewModel.duration
+        diveLogView.depthValueLabel.text = viewModel.depth
+        diveLogView.timestampLabel.text = viewModel.date
+        diveLogView.usernameLabel.text = viewModel.username
+        
+        if let url = viewModel.userIcon {
+            diveLogView.iconImageView.af_setImage(withURL: url)
+        }
+        
+        if let buddies = viewModel.buddyIcons {
+            for (n, buddyIcon) in buddies.enumerated() {
+                let frame = CGRect(x: n * 15, y: 0, width: 30, height: 30)
+                let buddyIconView = UIImageView(frame: frame)
+                buddyIconView.layer.cornerRadius = 15
+                buddyIconView.clipsToBounds = true
+                buddyIconView.contentMode = .scaleAspectFill
+                buddyIconView.backgroundColor = .gray
+                if let url = buddyIcon {
+                    buddyIconView.af_setImage(withURL: url)
+                } else {
+                    buddyIconView.image = #imageLiteral(resourceName: "defaultUserIcon")
+                }
+                diveLogView.buddyView.addSubview(buddyIconView)
+            }
+        }
+    }
+    
     override func prepareForReuse() {
         super.prepareForReuse()
+        
+        for view in diveLogView.buddyView.subviews {
+            view.removeFromSuperview()
+        }
         
         diveLogView.iconImageView.image = #imageLiteral(resourceName: "defaultUserIcon")
     }
