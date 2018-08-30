@@ -65,7 +65,6 @@ class ExplorerTests: XCTestCase {
             timeIn: times.0,
             timeOut: times.1,
             notes: "This is a test",
-
             user: User(
                 fullName: "Sylvia Earle",
                 username: "sylle",
