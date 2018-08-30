@@ -31,7 +31,7 @@ class ViewController: UIViewController {
         view.addSubview(logTableView)
         installConstraints()
         generateDiveLogs()
-        let diveLogsView = viewModelsFrom(dataModels: diveLogs)
+        _ = viewModelsFrom(dataModels: diveLogs)
         print(diveLogs)
     }
 
