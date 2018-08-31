@@ -12,7 +12,7 @@ import AlamofireImage
 
 class ViewController: UIViewController {
     
-    var diveLogs = [DiveLog]()
+    var diveLogViewModels = [DiveLogViewModel]()
     
     lazy var logTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
@@ -30,9 +30,9 @@ class ViewController: UIViewController {
         self.navigationController?.navigationBar.isTranslucent = false
         view.addSubview(logTableView)
         installConstraints()
-        generateDiveLogs()
-        _ = viewModelsFrom(dataModels: diveLogs)
-        print(diveLogs)
+        let diveLogs = getDiveLogs()
+        diveLogViewModels = viewModelsFrom(dataModels: diveLogs)
+        logTableView.reloadData()
     }
 
     func installConstraints() {
@@ -43,7 +43,8 @@ class ViewController: UIViewController {
         logTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
     }
     
-    func generateDiveLogs() {
+    func getDiveLogs() -> [DiveLog] {
+        var diveLogs = [DiveLog]()
         for n in 1...21 {
             let date = getRandomDate()
             let offset = getRandomOffset(date: date!)
@@ -56,26 +57,29 @@ class ViewController: UIViewController {
             diveLogs.append(DiveLog(
                 diveNumber: n, date: date!, depth: Int(arc4random_uniform(100)), location: location[Int(arc4random_uniform(UInt32(location.count)))], entryType: entry[Int(arc4random_uniform(UInt32(entry.count)))], waterType: water[Int(arc4random_uniform(UInt32(water.count)))], timeIn: date!, timeOut: offset!, notes: notes[Int(arc4random_uniform(UInt32(notes.count)))], user: user, buddies: [User(fullName: "Ocean Ramsey", username: "oramsey", icon: "https://xcelwetsuits.eu/wp-content/uploads/2018/04/ocean-ramsey-wears-dolphin-uv-shirt.jpg"), User(fullName: "Victor Berge", username: "vberge", icon: "https://thumbs.worthpoint.com/zoom/images1/1/0113/09/original-wwii-usa-navy-victor-berge_1_ead28c39bfc74ebfb688c7af5f68a042.jpg"), User(fullName: "Jacques Cousteau", username: "jaco", icon: nil)]))
         }
+        
+        return diveLogs
+        
     }
     
     func viewModelsFrom(dataModels: [DiveLog]) -> [DiveLogViewModel] {
-        var diveLogsView = [DiveLogViewModel]()
-        for diveLog in diveLogs {
+        var diveLogViewModels = [DiveLogViewModel]()
+        for diveLog in dataModels {
             let viewModel = DiveLogViewModel(diveLog: diveLog)
-            diveLogsView.append(viewModel)
+            diveLogViewModels.append(viewModel)
         }
-        return diveLogsView
+        return diveLogViewModels
     }
 }
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return diveLogs.count
+        return diveLogViewModels.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: TableViewCell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! TableViewCell
-        let viewModel = DiveLogViewModel(diveLog: diveLogs[indexPath.row])
+        let viewModel = diveLogViewModels[indexPath.row]
         
         cell.configure(with: viewModel)
         

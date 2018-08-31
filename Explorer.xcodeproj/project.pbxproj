@@ -13,7 +13,7 @@
 		AE4C6F6021210ADD00F6FFC9 /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AE4C6F5D21210ADD00F6FFC9 /* Roboto-Black.ttf */; };
 		AE4C6F6121210ADD00F6FFC9 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AE4C6F5E21210ADD00F6FFC9 /* Roboto-Regular.ttf */; };
 		AE6FC8D02123880500F4B48A /* DiveLogViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6FC8CF2123880500F4B48A /* DiveLogViewModel.swift */; };
-		AEA8ECBB2134B80C00925D80 /* LocationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA8ECBA2134B80C00925D80 /* LocationData.swift */; };
+		AEA8ECBB2134B80C00925D80 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA8ECBA2134B80C00925D80 /* Location.swift */; };
 		AEB697B0211E960800CB8F3C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB697AF211E960800CB8F3C /* AppDelegate.swift */; };
 		AEB697B2211E960800CB8F3C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB697B1211E960800CB8F3C /* ViewController.swift */; };
 		AEB697B5211E960800CB8F3C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEB697B3211E960800CB8F3C /* Main.storyboard */; };
@@ -52,7 +52,7 @@
 		AE4C6F5D21210ADD00F6FFC9 /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Black.ttf"; sourceTree = "<group>"; };
 		AE4C6F5E21210ADD00F6FFC9 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		AE6FC8CF2123880500F4B48A /* DiveLogViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiveLogViewModel.swift; sourceTree = "<group>"; };
-		AEA8ECBA2134B80C00925D80 /* LocationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationData.swift; sourceTree = "<group>"; };
+		AEA8ECBA2134B80C00925D80 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		AEB697AC211E960800CB8F3C /* Explorer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Explorer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEB697AF211E960800CB8F3C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AEB697B1211E960800CB8F3C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -122,7 +122,7 @@
 				AEECF4A021227F4600AE6314 /* DiveLog.swift */,
 				AE6FC8CF2123880500F4B48A /* DiveLogViewModel.swift */,
 				AE0004B82130CD8400838D03 /* User.swift */,
-				AEA8ECBA2134B80C00925D80 /* LocationData.swift */,
+				AEA8ECBA2134B80C00925D80 /* Location.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -396,7 +396,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AEA8ECBB2134B80C00925D80 /* LocationData.swift in Sources */,
+				AEA8ECBB2134B80C00925D80 /* Location.swift in Sources */,
 				AEECF4A121227F4600AE6314 /* DiveLog.swift in Sources */,
 				AE6FC8D02123880500F4B48A /* DiveLogViewModel.swift in Sources */,
 				AEB697DE211EAE1600CB8F3C /* TableViewCell.swift in Sources */,
