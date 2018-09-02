@@ -14,6 +14,7 @@ struct DiveLogViewModel {
     let duration: String
     let userFullName: String
     let username: String
+    let mapImageUrl: URL?
     let userIcon: URL?
     var buddyIcons: [URL?]?
     
@@ -30,6 +31,22 @@ struct DiveLogViewModel {
         self.duration = "\(String(Int(diveLog.timeOut.timeIntervalSince(diveLog.timeIn) / 60))) min"
         self.userFullName = diveLog.user.fullName
         self.username = diveLog.user.username
+        
+        var mapString = "https://maps.googleapis.com/maps/api/staticmap?center=&Brooklyn+Bridge,New+York,NY&zoom=6&size=600x300&maptype=landscape.natural&key=\(GOOGLE_API_KEY)"
+        mapString = mapString.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+        //        "http://maps.google.com/maps/api/staticmap?center=36.949951,-77.7666379%@&sensor=true%@"
+        
+//        https://maps.googleapis.com/maps/api/staticmap?center=&zoom=6&size=600x300&maptype=landscape&key=\(GOOGLE_API_KEY)"
+        self.mapImageUrl = URL(string: mapString)
+        
+//        NSString *staticMapUrl = [NSString stringWithFormat:@"http://maps.google.com/maps/api/staticmap?center=%@&sensor=true%@", [recentSearch objectForKey:@"searchTerm"],@"zoom=5&size=640x200"];
+
+        
+//            self.mapImageUrl = mapUrl
+//        } else {
+//            self.mapImageUrl = nil
+//        }
+        
         if let validUserIcon = diveLog.user.icon {
             self.userIcon = URL(string: validUserIcon)
         } else {

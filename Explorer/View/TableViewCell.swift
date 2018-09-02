@@ -7,6 +7,10 @@
 //
 
 import UIKit
+import GoogleMaps
+import GooglePlaces
+import Alamofire
+import AlamofireImage
 
 class TableViewCell: UITableViewCell {
     
@@ -19,14 +23,20 @@ class TableViewCell: UITableViewCell {
         
         contentView.addSubview(diveLogView)
         installConstraints()
-        
     }
     
     func configure(with viewModel: DiveLogViewModel) {
+        // TODO: Add mapview code
+        
         diveLogView.durationValueLabel.text = viewModel.duration
         diveLogView.depthValueLabel.text = viewModel.depth
         diveLogView.timestampLabel.text = viewModel.date
         diveLogView.usernameLabel.text = viewModel.username
+        if let mapUrl = viewModel.mapImageUrl {
+            diveLogView.bgImageView.af_setImage(withURL: mapUrl)
+        } else {
+            diveLogView.bgImageView.image = #imageLiteral(resourceName: "ScreenshotGoogleMaps")
+        }
         
         if let url = viewModel.userIcon {
             diveLogView.iconImageView.af_setImage(withURL: url)

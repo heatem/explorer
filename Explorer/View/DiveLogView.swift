@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GoogleMaps
 
 class DiveLogView: UIView {
     
@@ -106,6 +107,7 @@ class DiveLogView: UIView {
         super.init(frame: frame)
         
         addSubview(bgImageView)
+//        addSubview(mapView)
         addSubview(buddiesLabel)
         addSubview(buddyView)
         addSubview(durationLabel)
@@ -129,6 +131,13 @@ class DiveLogView: UIView {
         bgImageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -40).isActive = true
         bgImageView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         bgImageView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        
+        // TODO: MapView constraints to replace bgImageView
+//        mapView.translatesAutoresizingMaskIntoConstraints = false
+//        mapView.topAnchor.constraint(equalTo: topAnchor).isActive = true
+//        mapView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -40).isActive = true
+//        mapView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+//        mapView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         
         buddiesLabel.translatesAutoresizingMaskIntoConstraints = false
         buddiesLabel.topAnchor.constraint(equalTo: topAnchor, constant: 10).isActive = true
@@ -167,18 +176,21 @@ class DiveLogView: UIView {
         depthValueLabel.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.5).isActive = true
         
         iconImageView.translatesAutoresizingMaskIntoConstraints = false
+//        iconImageView.topAnchor.constraint(equalTo: mapView.bottomAnchor, constant: -24).isActive = true
         iconImageView.topAnchor.constraint(equalTo: bgImageView.bottomAnchor, constant: -24).isActive = true
         iconImageView.heightAnchor.constraint(equalToConstant: 48).isActive = true
         iconImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12).isActive = true
         iconImageView.widthAnchor.constraint(equalToConstant: 48).isActive = true
         
         usernameLabel.translatesAutoresizingMaskIntoConstraints = false
+//        usernameLabel.topAnchor.constraint(equalTo: mapView.bottomAnchor, constant: 4).isActive = true
         usernameLabel.topAnchor.constraint(equalTo: bgImageView.bottomAnchor, constant: 4).isActive = true
         usernameLabel.heightAnchor.constraint(equalToConstant: 12).isActive = true
         usernameLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: 4).isActive = true
         usernameLabel.widthAnchor.constraint(equalTo: widthAnchor, constant: 0.4).isActive = true
         
         timestampLabel.translatesAutoresizingMaskIntoConstraints = false
+//        timestampLabel.topAnchor.constraint(equalTo: mapView.bottomAnchor, constant: 4).isActive = true
         timestampLabel.topAnchor.constraint(equalTo: bgImageView.bottomAnchor, constant: 4).isActive = true
         timestampLabel.heightAnchor.constraint(equalToConstant: 12).isActive = true
         timestampLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12).isActive = true
