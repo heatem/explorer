@@ -14,6 +14,7 @@ struct DiveLogViewModel {
     let duration: String
     let userFullName: String
     let username: String
+    let mapImageUrl: URL?
     let userIcon: URL?
     var buddyIcons: [URL?]?
     
@@ -30,6 +31,14 @@ struct DiveLogViewModel {
         self.duration = "\(String(Int(diveLog.timeOut.timeIntervalSince(diveLog.timeIn) / 60))) min"
         self.userFullName = diveLog.user.fullName
         self.username = diveLog.user.username
+        
+        let mapUrl = URL(string: "https://maps.googleapis.com/maps/api/staticmap?center=\(diveLog.location.lat),\(diveLog.location.lon)&zoom=14&size=500x300&maptype=roadmap&markers=color:red%7Clabel:%7C\(diveLog.location.lat),\(diveLog.location.lon)")
+        if let validMapUrl = mapUrl {
+            self.mapImageUrl = validMapUrl
+        } else {
+            self.mapImageUrl = nil
+        }
+        
         if let validUserIcon = diveLog.user.icon {
             self.userIcon = URL(string: validUserIcon)
         } else {
