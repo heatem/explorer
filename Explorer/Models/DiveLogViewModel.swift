@@ -32,7 +32,7 @@ struct DiveLogViewModel {
         self.userFullName = diveLog.user.fullName
         self.username = diveLog.user.username
         
-        let mapUrl = URL(string: "https://maps.googleapis.com/maps/api/staticmap?center=\(diveLog.location.lat),\(diveLog.location.lon)&zoom=13&size=600x300&maptype=roadmap")
+        let mapUrl = URL(string: "https://maps.googleapis.com/maps/api/staticmap?center=\(diveLog.location.lat),\(diveLog.location.lon)&zoom=14&size=500x300&maptype=roadmap&markers=color:red%7Clabel:%7C\(diveLog.location.lat),\(diveLog.location.lon)")
         if let validMapUrl = mapUrl {
             self.mapImageUrl = validMapUrl
         } else {
