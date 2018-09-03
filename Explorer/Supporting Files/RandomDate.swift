@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 func getRandomDate() -> Date? {
     let dayOffset = arc4random_uniform(365)
     let hourOffset = arc4random_uniform(24)
