@@ -32,20 +32,12 @@ struct DiveLogViewModel {
         self.userFullName = diveLog.user.fullName
         self.username = diveLog.user.username
         
-        var mapString = "https://maps.googleapis.com/maps/api/staticmap?center=&Brooklyn+Bridge,New+York,NY&zoom=6&size=600x300&maptype=landscape.natural&key=\(GOOGLE_API_KEY)"
-        mapString = mapString.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
-        //        "http://maps.google.com/maps/api/staticmap?center=36.949951,-77.7666379%@&sensor=true%@"
-        
-//        https://maps.googleapis.com/maps/api/staticmap?center=&zoom=6&size=600x300&maptype=landscape&key=\(GOOGLE_API_KEY)"
-        self.mapImageUrl = URL(string: mapString)
-        
-//        NSString *staticMapUrl = [NSString stringWithFormat:@"http://maps.google.com/maps/api/staticmap?center=%@&sensor=true%@", [recentSearch objectForKey:@"searchTerm"],@"zoom=5&size=640x200"];
-
-        
-//            self.mapImageUrl = mapUrl
-//        } else {
-//            self.mapImageUrl = nil
-//        }
+        let mapUrl = URL(string: "https://maps.googleapis.com/maps/api/staticmap?center=\(diveLog.location.lat),\(diveLog.location.lon)&zoom=13&size=600x300&maptype=roadmap")
+        if let validMapUrl = mapUrl {
+            self.mapImageUrl = validMapUrl
+        } else {
+            self.mapImageUrl = nil
+        }
         
         if let validUserIcon = diveLog.user.icon {
             self.userIcon = URL(string: validUserIcon)

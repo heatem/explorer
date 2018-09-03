@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import GoogleMaps
-import GooglePlaces
 import Alamofire
 import AlamofireImage
 
@@ -26,12 +24,11 @@ class TableViewCell: UITableViewCell {
     }
     
     func configure(with viewModel: DiveLogViewModel) {
-        // TODO: Add mapview code
-        
         diveLogView.durationValueLabel.text = viewModel.duration
         diveLogView.depthValueLabel.text = viewModel.depth
         diveLogView.timestampLabel.text = viewModel.date
         diveLogView.usernameLabel.text = viewModel.username
+        
         if let mapUrl = viewModel.mapImageUrl {
             diveLogView.bgImageView.af_setImage(withURL: mapUrl)
         } else {
