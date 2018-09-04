@@ -14,7 +14,7 @@ class DiveLogView: UIView {
     let bgImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
-        imageView.image = UIImage(named: "ScreenshotGoogleMaps")
+        imageView.image = UIImage(named: "LesDiving")
         imageView.clipsToBounds = true
         return imageView
     }()

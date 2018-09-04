@@ -32,7 +32,7 @@ class TableViewCell: UITableViewCell {
         if let mapUrl = viewModel.mapImageUrl {
             diveLogView.bgImageView.af_setImage(withURL: mapUrl)
         } else {
-            diveLogView.bgImageView.image = #imageLiteral(resourceName: "ScreenshotGoogleMaps")
+            diveLogView.bgImageView.image = #imageLiteral(resourceName: "LesDiving")
         }
         
         if let url = viewModel.userIcon {
