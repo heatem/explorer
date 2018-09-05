@@ -22,6 +22,8 @@
 		AEB697C5211E960900CB8F3C /* ExplorerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB697C4211E960900CB8F3C /* ExplorerTests.swift */; };
 		AEB697D0211E960900CB8F3C /* ExplorerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB697CF211E960900CB8F3C /* ExplorerUITests.swift */; };
 		AEB697DE211EAE1600CB8F3C /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB697DD211EAE1600CB8F3C /* TableViewCell.swift */; };
+		AEC4FD31213F90FB00072E02 /* CreateLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC4FD30213F90FB00072E02 /* CreateLogViewController.swift */; };
+		AEC4FD33213F912E00072E02 /* CreateLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC4FD32213F912E00072E02 /* CreateLogView.swift */; };
 		AED3EF70212B5938006FD052 /* DiveLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED3EF6F212B5938006FD052 /* DiveLogView.swift */; };
 		AEECF4A121227F4600AE6314 /* DiveLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEECF4A021227F4600AE6314 /* DiveLog.swift */; };
 		AEECF4A3212288F200AE6314 /* RandomDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEECF4A2212288F200AE6314 /* RandomDate.swift */; };
@@ -67,6 +69,8 @@
 		AEB697CF211E960900CB8F3C /* ExplorerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExplorerUITests.swift; sourceTree = "<group>"; };
 		AEB697D1211E960900CB8F3C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AEB697DD211EAE1600CB8F3C /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		AEC4FD30213F90FB00072E02 /* CreateLogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateLogViewController.swift; sourceTree = "<group>"; };
+		AEC4FD32213F912E00072E02 /* CreateLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateLogView.swift; sourceTree = "<group>"; };
 		AED3EF6F212B5938006FD052 /* DiveLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiveLogView.swift; sourceTree = "<group>"; };
 		AEECF4A021227F4600AE6314 /* DiveLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiveLog.swift; sourceTree = "<group>"; };
 		AEECF4A2212288F200AE6314 /* RandomDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomDate.swift; sourceTree = "<group>"; };
@@ -132,6 +136,7 @@
 			children = (
 				AED3EF6F212B5938006FD052 /* DiveLogView.swift */,
 				AEB697DD211EAE1600CB8F3C /* TableViewCell.swift */,
+				AEC4FD32213F912E00072E02 /* CreateLogView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -140,6 +145,7 @@
 			isa = PBXGroup;
 			children = (
 				AEB697B1211E960800CB8F3C /* ViewController.swift */,
+				AEC4FD30213F90FB00072E02 /* CreateLogViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -401,10 +407,12 @@
 				AE6FC8D02123880500F4B48A /* DiveLogViewModel.swift in Sources */,
 				AEB697DE211EAE1600CB8F3C /* TableViewCell.swift in Sources */,
 				AEECF4A3212288F200AE6314 /* RandomDate.swift in Sources */,
+				AEC4FD33213F912E00072E02 /* CreateLogView.swift in Sources */,
 				AE0004B92130CD8400838D03 /* User.swift in Sources */,
 				AEB697B2211E960800CB8F3C /* ViewController.swift in Sources */,
 				AED3EF70212B5938006FD052 /* DiveLogView.swift in Sources */,
 				AEB697B0211E960800CB8F3C /* AppDelegate.swift in Sources */,
+				AEC4FD31213F90FB00072E02 /* CreateLogViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

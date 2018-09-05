@@ -23,11 +23,16 @@ class ViewController: UIViewController {
         return tableView
     }()
     
+    let createLogViewController = CreateLogViewController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         title = "Explorer"
         self.navigationController?.navigationBar.isTranslucent = false
+        let addLogButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(presentCreateLogViewController))
+        self.navigationItem.rightBarButtonItem = addLogButton
+
         view.addSubview(logTableView)
         installConstraints()
         let diveLogs = getDiveLogs()
@@ -69,6 +74,10 @@ class ViewController: UIViewController {
             diveLogViewModels.append(viewModel)
         }
         return diveLogViewModels
+    }
+    
+    @objc func presentCreateLogViewController() {
+        present(createLogViewController, animated: true, completion: nil)
     }
 }
 
