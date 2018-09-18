@@ -11,7 +11,6 @@ import UIKit
 
 class CreateLogView: UIView {
     
-//    diveNumber - Text field with number pad
     let diveNumberLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: "Roboto-Regular", size: 17)
@@ -28,7 +27,6 @@ class CreateLogView: UIView {
         return textfield
     }()
 
-//    Date
     let diveDateLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: "Roboto-Regular", size: 17)
@@ -36,7 +34,6 @@ class CreateLogView: UIView {
         return label
     }()
     
-    //    TODO: auto-populate with current date
     let diveDatePicker: UIDatePicker = {
         let datePicker = UIDatePicker()
         datePicker.datePickerMode = UIDatePickerMode.date
@@ -44,7 +41,6 @@ class CreateLogView: UIView {
         return datePicker
     }()
     
-//    Depth - min label, max label, and a slider
     let diveDepthLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: "Roboto-Regular", size: 17)
@@ -76,7 +72,6 @@ class CreateLogView: UIView {
         return slider
     }()
     
-//    Location - Text field. user should be able to enter lat/long, or an address. Needs to create a Location object (name, lat, lon)
     let diveLocationLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: "Roboto-Regular", size: 17)
@@ -93,7 +88,6 @@ class CreateLogView: UIView {
         return textfield
     }()
     
-//    EntryType - Segmented control
     let entryTypeLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: "Roboto-Regular", size: 17)
@@ -109,7 +103,6 @@ class CreateLogView: UIView {
         return segmentedControl
     }()
     
-//    waterType - Segmented control
     let waterTypeLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: "Roboto-Regular", size: 17)
@@ -125,7 +118,6 @@ class CreateLogView: UIView {
         return segmentedControl
     }()
     
-//    timeIn - time selector
     let startTimeLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: "Roboto-Regular", size: 17)
@@ -140,7 +132,6 @@ class CreateLogView: UIView {
         return timePicker
     }()
     
-//    timeOut - time selector
     let endTimeLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: "Roboto-Regular", size: 17)
@@ -155,7 +146,6 @@ class CreateLogView: UIView {
         return timePicker
     }()
     
-//    Notes - text field
     let notesLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: "Roboto-Regular", size: 17)
@@ -171,7 +161,6 @@ class CreateLogView: UIView {
         return textview
     }()
     
-//    Buddies - text field
     let buddiesLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: "Roboto-Regular", size: 17)
@@ -188,10 +177,15 @@ class CreateLogView: UIView {
         return textfield
     }()
     
-    let submitButton: UIButton = {
+    let saveDiveButton: UIButton = {
         let button = UIButton()
-        
-        
+        button.setTitle("Save Dive", for: .normal)
+        button.backgroundColor = .blue
+        button.layer.cornerRadius = 8
+        button.layer.shadowColor = UIColor.gray.cgColor
+        button.layer.shadowOpacity = 1.0
+        button.layer.shadowOffset = CGSize(width: 1.1, height: 1.1)
+        button.layer.masksToBounds = false
         return button
     }()
     
@@ -220,6 +214,7 @@ class CreateLogView: UIView {
         addSubview(notesTextView)
         addSubview(buddiesLabel)
         addSubview(buddiesTextField)
+        addSubview(saveDiveButton)
         
         installConstraints()
     }
@@ -366,6 +361,13 @@ class CreateLogView: UIView {
         buddiesTextField.heightAnchor.constraint(equalToConstant: 54).isActive = true
         buddiesTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24).isActive = true
         buddiesTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24).isActive = true
+        
+        // Save Dive Button constraints
+        saveDiveButton.translatesAutoresizingMaskIntoConstraints = false
+        saveDiveButton.topAnchor.constraint(equalTo: buddiesTextField.bottomAnchor, constant: 24).isActive = true
+        saveDiveButton.heightAnchor.constraint(equalToConstant: 54).isActive = true
+        saveDiveButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24).isActive = true
+        saveDiveButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24).isActive = true
     }
     
     required init?(coder aDecoder: NSCoder) {

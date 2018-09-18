@@ -13,7 +13,7 @@ class CreateLogViewController: UIViewController {
     
     lazy var scrollView: UIScrollView = {
         let view = UIScrollView()
-        view.contentSize.height = 2000
+        view.contentSize.height = 1200
         view.backgroundColor = .lightGray
         return view
     }()
@@ -38,7 +38,7 @@ class CreateLogViewController: UIViewController {
         
         createLogView.translatesAutoresizingMaskIntoConstraints = false
         createLogView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
-        createLogView.heightAnchor.constraint(equalToConstant: 2000).isActive = true
+        createLogView.heightAnchor.constraint(equalToConstant: 1200).isActive = true
         createLogView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
         createLogView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
     }
