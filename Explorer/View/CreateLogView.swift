@@ -36,7 +36,7 @@ class CreateLogView: UIView {
     
     let diveDatePicker: UIDatePicker = {
         let datePicker = UIDatePicker()
-        datePicker.datePickerMode = UIDatePickerMode.date
+        datePicker.datePickerMode = UIDatePicker.Mode.date
         datePicker.backgroundColor = .white
         return datePicker
     }()
@@ -127,7 +127,7 @@ class CreateLogView: UIView {
     
     let startTimePicker: UIDatePicker = {
         let timePicker = UIDatePicker()
-        timePicker.datePickerMode = UIDatePickerMode.time
+        timePicker.datePickerMode = UIDatePicker.Mode.time
         timePicker.backgroundColor = .white
         return timePicker
     }()
@@ -141,7 +141,7 @@ class CreateLogView: UIView {
     
     let endTimePicker: UIDatePicker = {
         let timePicker = UIDatePicker()
-        timePicker.datePickerMode = UIDatePickerMode.time
+        timePicker.datePickerMode = UIDatePicker.Mode.time
         timePicker.backgroundColor = .white
         return timePicker
     }()

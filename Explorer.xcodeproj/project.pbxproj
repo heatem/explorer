@@ -295,13 +295,16 @@
 				TargetAttributes = {
 					AEB697AB211E960800CB8F3C = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1000;
 					};
 					AEB697BF211E960900CB8F3C = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1000;
 						TestTargetID = AEB697AB211E960800CB8F3C;
 					};
 					AEB697CA211E960900CB8F3C = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1000;
 						TestTargetID = AEB697AB211E960800CB8F3C;
 					};
 				};
@@ -595,7 +598,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = me.heathermason.Explorer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -614,7 +617,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = me.heathermason.Explorer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -634,7 +637,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = me.heathermason.ExplorerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Explorer.app/Explorer";
 			};
@@ -655,7 +658,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = me.heathermason.ExplorerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Explorer.app/Explorer";
 			};
@@ -675,7 +678,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = me.heathermason.ExplorerUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = Explorer;
 			};
@@ -695,7 +698,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = me.heathermason.ExplorerUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = Explorer;
 			};
