@@ -9,6 +9,9 @@
 import Foundation
 import UIKit
 
+
+// TODO: Figure out date picker -- Create date picker view and turn the textfield into a button that displays the selected date
+
 class CreateLogView: UIView {
     
     let diveNumberLabel: UILabel = {
@@ -24,6 +27,7 @@ class CreateLogView: UIView {
         textfield.font = UIFont(name: "Roboto-Regular", size: 17)
         textfield.borderStyle = .roundedRect
         textfield.clearsOnBeginEditing = true
+        textfield.keyboardType = .numberPad
         return textfield
     }()
 
@@ -33,12 +37,54 @@ class CreateLogView: UIView {
         label.text = "Dive Date:"
         return label
     }()
+
+//    let diveDateButton: UIButton = {
+//        let button = UIButton()
+//        button.setTitle("", for: .normal)
+//        button.backgroundColor = .white
+//        button.layer.cornerRadius = 5
+//        button.addTarget(self, action: #selector(setDate), for: .touchUpInside)
+//        return button
+//    }()
     
-    let diveDatePicker: UIDatePicker = {
-        let datePicker = UIDatePicker()
-        datePicker.datePickerMode = UIDatePicker.Mode.date
-        datePicker.backgroundColor = .white
-        return datePicker
+    // diveDateTextField
+    let diveDateTextField: UIButton = {
+        let diveDatePicker: UIDatePicker = {
+            let datePicker = UIDatePicker()
+            datePicker.datePickerMode = UIDatePicker.Mode.date
+            datePicker.backgroundColor = .white
+            return datePicker
+        }()
+        /*
+         toolBar.barStyle = UIBarStyle.Default
+         toolBar.translucent = true
+         toolBar.tintColor = UIColor.blackColor()
+         toolBar.sizeToFit()
+         
+         let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.Plain, target: self, action: mySelect)
+         let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: nil, action: nil)
+         
+         toolBar.setItems([ spaceButton, doneButton], animated: false)
+         toolBar.userInteractionEnabled = true
+         
+         return toolBar*/
+
+        
+//        let textfield = UITextField()
+//        textfield.textColor = .black
+//        textfield.font = UIFont(name: "Roboto-Regular", size: 17)
+//        textfield.borderStyle = .roundedRect
+//        textfield.clearsOnBeginEditing = true
+//        textfield.inputView = diveDatePicker
+//        return textfield
+        
+        let button = UIButton()
+        button.setTitle("", for: .normal)
+        button.backgroundColor = .white
+        button.layer.cornerRadius = 5
+        button.addTarget(self, action: #selector(presentPicker), for: .touchUpInside)
+        return button
+
     }()
     
     let diveDepthLabel: UILabel = {
@@ -195,7 +241,8 @@ class CreateLogView: UIView {
         addSubview(diveNumberLabel)
         addSubview(diveNumberTextField)
         addSubview(diveDateLabel)
-        addSubview(diveDatePicker)
+        addSubview(diveDateTextField)
+//        addSubview(diveDateButton)
         addSubview(diveDepthLabel)
         addSubview(minDepthLabel)
         addSubview(maxDepthLabel)
@@ -217,6 +264,9 @@ class CreateLogView: UIView {
         addSubview(saveDiveButton)
         
         installConstraints()
+        
+//        let toolBar = UIToolbar().toolbarPicker(selector: #selector(self.dismissPicker))
+//        diveDateTextField.inputAccessoryView = toolBar
     }
     
     func installConstraints() {
@@ -241,15 +291,22 @@ class CreateLogView: UIView {
         diveDateLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24).isActive = true
         diveDateLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24).isActive = true
         
-        diveDatePicker.translatesAutoresizingMaskIntoConstraints = false
-        diveDatePicker.topAnchor.constraint(equalTo: diveDateLabel.bottomAnchor, constant: 8).isActive = true
-        diveDatePicker.heightAnchor.constraint(equalToConstant: 54).isActive = true
-        diveDatePicker.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24).isActive = true
-        diveDatePicker.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24).isActive = true
+        diveDateTextField.translatesAutoresizingMaskIntoConstraints = false
+        diveDateTextField.topAnchor.constraint(equalTo: diveDateLabel.bottomAnchor, constant: 8).isActive = true
+        diveDateTextField.heightAnchor.constraint(equalToConstant: 54).isActive = true
+        diveDateTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24).isActive = true
+        diveDateTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24).isActive = true
+
+//        diveDateButton.translatesAutoresizingMaskIntoConstraints = false
+//        diveDateButton.topAnchor.constraint(equalTo: diveDateLabel.bottomAnchor, constant: 8).isActive = true
+//        diveDateButton.heightAnchor.constraint(equalToConstant: 54).isActive = true
+//        diveDateButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24).isActive = true
+//        diveDateButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24).isActive = true
         
         // Depth constraints
         diveDepthLabel.translatesAutoresizingMaskIntoConstraints = false
-        diveDepthLabel.topAnchor.constraint(equalTo: diveDatePicker.bottomAnchor, constant: 18).isActive = true
+        diveDepthLabel.topAnchor.constraint(equalTo: diveDateTextField.bottomAnchor, constant: 18).isActive = true
+//        diveDepthLabel.topAnchor.constraint(equalTo: diveDateButton.bottomAnchor, constant: 18).isActive = true
         diveDepthLabel.heightAnchor.constraint(equalToConstant: 16).isActive = true
         diveDepthLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 24).isActive = true
         diveDepthLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24).isActive = true
@@ -370,7 +427,30 @@ class CreateLogView: UIView {
         saveDiveButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24).isActive = true
     }
     
+    @objc func setDate() {
+        
+        // TODO: Show date picker, styled, with done (and cancel?) button, and return date
+        // TODO: Styling: don't take up the whole screen
+        print("button pressed")
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+}
+
+extension UIToolbar {
+    func toolbarPicker(selector: Selector) -> UIToolbar {
+        let toolbar = UIToolbar()
+        
+        toolbar.barStyle = UIBarStyle.default
+        toolbar.isTranslucent = true
+        toolbar.sizeToFit()
+        
+        let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.plain, target: self, action: #selector(CreateLogView.setDate))
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
+        toolbar.setItems([spaceButton, doneButton], animated: false)
+        toolbar.isUserInteractionEnabled = true
+        return toolbar
     }
 }
