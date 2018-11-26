@@ -9,11 +9,11 @@
 /* Begin PBXBuildFile section */
 		3EF346A324E1FA150D692BF8 /* Pods_Explorer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8D1C165DA5CD86CD96AFA90 /* Pods_Explorer.framework */; };
 		AE0004B92130CD8400838D03 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0004B82130CD8400838D03 /* User.swift */; };
+		AE220E08219F0E02000BC3C5 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE220E07219F0E02000BC3C5 /* DatePickerView.swift */; };
 		AE4C6F5F21210ADD00F6FFC9 /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AE4C6F5C21210ADC00F6FFC9 /* Roboto-Thin.ttf */; };
 		AE4C6F6021210ADD00F6FFC9 /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AE4C6F5D21210ADD00F6FFC9 /* Roboto-Black.ttf */; };
 		AE4C6F6121210ADD00F6FFC9 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AE4C6F5E21210ADD00F6FFC9 /* Roboto-Regular.ttf */; };
 		AE6FC8D02123880500F4B48A /* DiveLogViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6FC8CF2123880500F4B48A /* DiveLogViewModel.swift */; };
-		AE7BFB8E21935AF1003CFF63 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7BFB8D21935AF1003CFF63 /* DatePickerView.swift */; };
 		AEA8ECBB2134B80C00925D80 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA8ECBA2134B80C00925D80 /* Location.swift */; };
 		AEB697B0211E960800CB8F3C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB697AF211E960800CB8F3C /* AppDelegate.swift */; };
 		AEB697B2211E960800CB8F3C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB697B1211E960800CB8F3C /* ViewController.swift */; };
@@ -51,11 +51,11 @@
 		1615693787981EF11FC8304A /* Pods-Explorer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Explorer.release.xcconfig"; path = "Pods/Target Support Files/Pods-Explorer/Pods-Explorer.release.xcconfig"; sourceTree = "<group>"; };
 		28A86D0C01729A8A9E392482 /* Pods-Explorer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Explorer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Explorer/Pods-Explorer.debug.xcconfig"; sourceTree = "<group>"; };
 		AE0004B82130CD8400838D03 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		AE220E07219F0E02000BC3C5 /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
 		AE4C6F5C21210ADC00F6FFC9 /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
 		AE4C6F5D21210ADD00F6FFC9 /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Black.ttf"; sourceTree = "<group>"; };
 		AE4C6F5E21210ADD00F6FFC9 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		AE6FC8CF2123880500F4B48A /* DiveLogViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiveLogViewModel.swift; sourceTree = "<group>"; };
-		AE7BFB8D21935AF1003CFF63 /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
 		AEA8ECBA2134B80C00925D80 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		AEB697AC211E960800CB8F3C /* Explorer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Explorer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEB697AF211E960800CB8F3C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -139,7 +139,7 @@
 				AED3EF6F212B5938006FD052 /* DiveLogView.swift */,
 				AEB697DD211EAE1600CB8F3C /* TableViewCell.swift */,
 				AEC4FD32213F912E00072E02 /* CreateLogView.swift */,
-				AE7BFB8D21935AF1003CFF63 /* DatePickerView.swift */,
+				AE220E07219F0E02000BC3C5 /* DatePickerView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -414,7 +414,7 @@
 				AEB697DE211EAE1600CB8F3C /* TableViewCell.swift in Sources */,
 				AEECF4A3212288F200AE6314 /* RandomDate.swift in Sources */,
 				AEC4FD33213F912E00072E02 /* CreateLogView.swift in Sources */,
-				AE7BFB8E21935AF1003CFF63 /* DatePickerView.swift in Sources */,
+				AE220E08219F0E02000BC3C5 /* DatePickerView.swift in Sources */,
 				AE0004B92130CD8400838D03 /* User.swift in Sources */,
 				AEB697B2211E960800CB8F3C /* ViewController.swift in Sources */,
 				AED3EF70212B5938006FD052 /* DiveLogView.swift in Sources */,
