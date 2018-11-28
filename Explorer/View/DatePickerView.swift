@@ -53,11 +53,9 @@ class DatePickerView: UIView {
     
     func configureWith(_ type: DatePickerType) {
         switch type {
-            case .date:
-                picker.datePickerMode = .date
-                // configure picker with just date (no time)
-            case .time: () // configure picker with just time here
-            default: ()
+            case .date: picker.datePickerMode = .date
+            case .time: picker.datePickerMode = .time
+            default: picker.datePickerMode = .dateAndTime
         }
     }
     

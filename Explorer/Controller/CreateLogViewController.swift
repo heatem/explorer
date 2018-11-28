@@ -27,11 +27,7 @@ class CreateLogViewController: UIViewController {
     
     var selectedDatePickerButton: UIButton?
     
-//    let dateFormatter: DateFormatter = {
-//        //
-//    }()
-    
-    var diveLogDiction = [String: Any]()
+    var diveLogDictionary = [String: Any]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +38,8 @@ class CreateLogViewController: UIViewController {
         
         datePickerView.doneButton.addTarget(self, action: #selector(setDate), for: .touchUpInside)
         createLogView.diveDateButton.addTarget(self, action: #selector(presentPicker(button:)), for: .touchUpInside)
+        createLogView.startTimeButton.addTarget(self, action: #selector(presentPicker(button:)), for: .touchUpInside)
+        createLogView.endTimeButton.addTarget(self, action: #selector(presentPicker(button:)), for: .touchUpInside)
         
         installConstraints()
     }
@@ -76,16 +74,23 @@ class CreateLogViewController: UIViewController {
         }
         
         switch selectedDatePickerButton {
-            case createLogView.diveDateButton: () // update title of button, and save the date to a global variable
-//            case createLogView.
-            // This should be the start time button
-            // create case for end time button once label is changed to button
+            case createLogView.diveDateButton:
+                diveLogDictionary["diveDate"] = datePickerView.picker.date
+                let formatter = DateFormatter()
+                formatter.dateFormat = "dd MMM yyyy"
+                createLogView.diveDateButton.setTitle("  \(formatter.string(from: diveLogDictionary["diveDate"] as! Date))", for: .normal)
+            case createLogView.startTimeButton:
+                diveLogDictionary["diveStartTime"] = datePickerView.picker.date
+                let formatter = DateFormatter()
+                formatter.dateFormat = "h:mm a"
+                createLogView.startTimeButton.setTitle("  \(formatter.string(from: diveLogDictionary["diveStartTime"] as! Date))", for: .normal)
+            case createLogView.endTimeButton:
+                diveLogDictionary["diveEndTime"] = datePickerView.picker.date
+                let formatter = DateFormatter()
+                formatter.dateFormat = "h:mm a"
+                createLogView.endTimeButton.setTitle("  \(formatter.string(from: diveLogDictionary["diveEndTime"] as! Date))", for: .normal)
         default: ()
         }
-        // which date/time is this? (dive date? dive time?)
-        // change button title to formatted date
-//        createLogView.diveDateButton.setTitle(datePickerView.picker.date, for: .normal)
-        print(datePickerView.picker.date)
     }
     
     @objc func presentPicker(button: UIButton) {
@@ -94,16 +99,12 @@ class CreateLogViewController: UIViewController {
             self.view.layoutIfNeeded()
         }
         
-//        datePickerView.configureWith(.date) // this made the picker show a date instead of date and time. figure out how to make it switch! Thinking I should be able to switch on the button that is passed in.
-        // set a variable to identify the sender
         selectedDatePickerButton = button
         switch selectedDatePickerButton {
             case createLogView.diveDateButton: datePickerView.configureWith(.date)
+            case createLogView.startTimeButton, createLogView.endTimeButton: datePickerView.configureWith(.time)
             default: datePickerView.configureWith(.normal)
         }
-        print(selectedDatePickerButton)
     }
 }
 
-// set a variable for the field calling the picker so you can determine which field to update and which data point to set the date for (to send to the database). don't worry about delegate.
-// set type for the date picker

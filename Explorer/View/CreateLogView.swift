@@ -9,8 +9,7 @@
 import Foundation
 import UIKit
 
-
-// TODO: Figure out date picker -- Create date picker view and turn the textfield into a button that displays the selected date
+// TODO: set button and text title to be the same size
 
 class CreateLogView: UIView {
     
@@ -38,13 +37,13 @@ class CreateLogView: UIView {
         return label
     }()
 
-    // TODO THIS IS WHAT I'M WORKING ON
     let diveDateButton: UIButton = {
         let button = UIButton()
         button.setTitle("", for: .normal)
+        button.setTitleColor(.black, for: .normal)
+        button.contentHorizontalAlignment = .left
         button.backgroundColor = .white
         button.layer.cornerRadius = 5
-//        button.addTarget(self, action: #selector(presentPicker), for: .touchUpInside)
         return button
     }()
     
@@ -132,11 +131,14 @@ class CreateLogView: UIView {
         return label
     }()
     
-    let startTimePicker: UIDatePicker = {
-        let timePicker = UIDatePicker()
-        timePicker.datePickerMode = UIDatePicker.Mode.time
-        timePicker.backgroundColor = .white
-        return timePicker
+    let startTimeButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("", for: .normal)
+        button.setTitleColor(.black, for: .normal)
+        button.contentHorizontalAlignment = .left
+        button.backgroundColor = .white
+        button.layer.cornerRadius = 5
+        return button
     }()
     
     let endTimeLabel: UILabel = {
@@ -146,11 +148,14 @@ class CreateLogView: UIView {
         return label
     }()
     
-    let endTimePicker: UIDatePicker = {
-        let timePicker = UIDatePicker()
-        timePicker.datePickerMode = UIDatePicker.Mode.time
-        timePicker.backgroundColor = .white
-        return timePicker
+    let endTimeButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("", for: .normal)
+        button.setTitleColor(.black, for: .normal)
+        button.contentHorizontalAlignment = .left
+        button.backgroundColor = .white
+        button.layer.cornerRadius = 5
+        return button
     }()
     
     let notesLabel: UILabel = {
@@ -214,9 +219,9 @@ class CreateLogView: UIView {
         addSubview(waterTypeLabel)
         addSubview(waterTypeControl)
         addSubview(startTimeLabel)
-        addSubview(startTimePicker)
+        addSubview(startTimeButton)
         addSubview(endTimeLabel)
-        addSubview(endTimePicker)
+        addSubview(endTimeButton)
         addSubview(notesLabel)
         addSubview(notesTextView)
         addSubview(buddiesLabel)
@@ -325,11 +330,11 @@ class CreateLogView: UIView {
         startTimeLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24).isActive = true
         startTimeLabel.widthAnchor.constraint(equalToConstant: 160).isActive = true
         
-        startTimePicker.translatesAutoresizingMaskIntoConstraints = false
-        startTimePicker.topAnchor.constraint(equalTo: startTimeLabel.bottomAnchor, constant: 8).isActive = true
-        startTimePicker.heightAnchor.constraint(equalToConstant: 54).isActive = true
-        startTimePicker.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24).isActive = true
-        startTimePicker.widthAnchor.constraint(equalToConstant: 160).isActive = true
+        startTimeButton.translatesAutoresizingMaskIntoConstraints = false
+        startTimeButton.topAnchor.constraint(equalTo: startTimeLabel.bottomAnchor, constant: 8).isActive = true
+        startTimeButton.heightAnchor.constraint(equalToConstant: 54).isActive = true
+        startTimeButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24).isActive = true
+        startTimeButton.widthAnchor.constraint(equalToConstant: 160).isActive = true
 
         endTimeLabel.translatesAutoresizingMaskIntoConstraints = false
         endTimeLabel.topAnchor.constraint(equalTo: waterTypeControl.bottomAnchor, constant: 12).isActive = true
@@ -337,15 +342,15 @@ class CreateLogView: UIView {
         endTimeLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24).isActive = true
         endTimeLabel.widthAnchor.constraint(equalToConstant: 160).isActive = true
         
-        endTimePicker.translatesAutoresizingMaskIntoConstraints = false
-        endTimePicker.topAnchor.constraint(equalTo: endTimeLabel.bottomAnchor, constant: 8).isActive = true
-        endTimePicker.heightAnchor.constraint(equalToConstant: 54).isActive = true
-        endTimePicker.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24).isActive = true
-        endTimePicker.widthAnchor.constraint(equalToConstant: 160).isActive = true
+        endTimeButton.translatesAutoresizingMaskIntoConstraints = false
+        endTimeButton.topAnchor.constraint(equalTo: endTimeLabel.bottomAnchor, constant: 8).isActive = true
+        endTimeButton.heightAnchor.constraint(equalToConstant: 54).isActive = true
+        endTimeButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24).isActive = true
+        endTimeButton.widthAnchor.constraint(equalToConstant: 160).isActive = true
         
         // Notes constraints
         notesLabel.translatesAutoresizingMaskIntoConstraints = false
-        notesLabel.topAnchor.constraint(equalTo: startTimePicker.bottomAnchor, constant: 12).isActive = true
+        notesLabel.topAnchor.constraint(equalTo: startTimeButton.bottomAnchor, constant: 12).isActive = true
         notesLabel.heightAnchor.constraint(equalToConstant: 16).isActive = true
         notesLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24).isActive = true
         notesLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24).isActive = true
