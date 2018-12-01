@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-// create the function to send data to the database in this file.
+// TODO: create the function to send data to the database in this file.
 
 class CreateLogViewController: UIViewController {
     
@@ -27,7 +27,9 @@ class CreateLogViewController: UIViewController {
     
     var selectedDatePickerButton: UIButton?
     
-    var diveLogDictionary = [String: Any]()
+    var diveDate = Date()
+    var diveStartTime = Date()
+    var diveEndTime = Date()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +42,8 @@ class CreateLogViewController: UIViewController {
         createLogView.diveDateButton.addTarget(self, action: #selector(presentPicker(button:)), for: .touchUpInside)
         createLogView.startTimeButton.addTarget(self, action: #selector(presentPicker(button:)), for: .touchUpInside)
         createLogView.endTimeButton.addTarget(self, action: #selector(presentPicker(button:)), for: .touchUpInside)
+        
+        createLogView.saveDiveButton.addTarget(self, action: #selector(saveDive), for: .touchUpInside)
         
         installConstraints()
     }
@@ -75,20 +79,20 @@ class CreateLogViewController: UIViewController {
         
         switch selectedDatePickerButton {
             case createLogView.diveDateButton:
-                diveLogDictionary["diveDate"] = datePickerView.picker.date
+                diveDate = datePickerView.picker.date
                 let formatter = DateFormatter()
                 formatter.dateFormat = "dd MMM yyyy"
-                createLogView.diveDateButton.setTitle("  \(formatter.string(from: diveLogDictionary["diveDate"] as! Date))", for: .normal)
+                createLogView.diveDateButton.setTitle("  \(formatter.string(from: diveDate))", for: .normal)
             case createLogView.startTimeButton:
-                diveLogDictionary["diveStartTime"] = datePickerView.picker.date
+                diveStartTime = datePickerView.picker.date
                 let formatter = DateFormatter()
                 formatter.dateFormat = "h:mm a"
-                createLogView.startTimeButton.setTitle("  \(formatter.string(from: diveLogDictionary["diveStartTime"] as! Date))", for: .normal)
+                createLogView.startTimeButton.setTitle("  \(formatter.string(from: diveStartTime))", for: .normal)
             case createLogView.endTimeButton:
-                diveLogDictionary["diveEndTime"] = datePickerView.picker.date
+                diveEndTime = datePickerView.picker.date
                 let formatter = DateFormatter()
                 formatter.dateFormat = "h:mm a"
-                createLogView.endTimeButton.setTitle("  \(formatter.string(from: diveLogDictionary["diveEndTime"] as! Date))", for: .normal)
+                createLogView.endTimeButton.setTitle("  \(formatter.string(from: diveEndTime))", for: .normal)
         default: ()
         }
     }
@@ -106,5 +110,25 @@ class CreateLogViewController: UIViewController {
             default: datePickerView.configureWith(.normal)
         }
     }
+    
+    @objc func saveDive() {
+        let user = User(fullName: "Jacques Cousteau", username: "JaC", icon: "")
+        let diveNumber = createLogView.diveNumberTextField.text
+        let diveDepth = createLogView.diveDepthSlider.value
+        let diveLocation = Location(name: createLogView.locationTextField.text ?? "Unknown", lat: 33.00, lon: -117.29)
+        var entryType: EntryType = .boat
+        switch createLogView.entryTypeControl.selectedSegmentIndex {
+            case 0: entryType = EntryType.boat
+            default: entryType = EntryType.shore
+        }
+        var waterType: WaterType = .salt
+        switch createLogView.waterTypeControl.selectedSegmentIndex {
+            case 0: waterType = WaterType.salt
+            default: waterType = WaterType.fresh
+        }
+        let diveNotes = createLogView.notesTextView.text
+        let diveBuddies = [User(fullName: "Full Name", username: createLogView.buddiesTextField.text ?? "", icon: "")]
+        
+        let log = DiveLog(diveNumber: Int(diveNumber ?? "0") ?? 0, date: diveDate, depth: Int(diveDepth), location: diveLocation, entryType: entryType, waterType: waterType, timeIn: diveStartTime, timeOut: diveEndTime, notes: diveNotes, user: user, buddies: diveBuddies)
+    }
 }
-

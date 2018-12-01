@@ -43,6 +43,7 @@ class CreateLogView: UIView {
         button.setTitleColor(.black, for: .normal)
         button.contentHorizontalAlignment = .left
         button.backgroundColor = .white
+        button.titleLabel?.font = UIFont(name: "Roboto-Regular", size: 17)
         button.layer.cornerRadius = 5
         return button
     }()
@@ -137,6 +138,7 @@ class CreateLogView: UIView {
         button.setTitleColor(.black, for: .normal)
         button.contentHorizontalAlignment = .left
         button.backgroundColor = .white
+        button.titleLabel?.font = UIFont(name: "Roboto-Regular", size: 17)
         button.layer.cornerRadius = 5
         return button
     }()
@@ -154,6 +156,7 @@ class CreateLogView: UIView {
         button.setTitleColor(.black, for: .normal)
         button.contentHorizontalAlignment = .left
         button.backgroundColor = .white
+        button.titleLabel?.font = UIFont(name: "Roboto-Regular", size: 17)
         button.layer.cornerRadius = 5
         return button
     }()
