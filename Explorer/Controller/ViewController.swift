@@ -23,8 +23,6 @@ class ViewController: UIViewController {
         return tableView
     }()
     
-    let createLogViewController = CreateLogViewController()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -77,7 +75,7 @@ class ViewController: UIViewController {
     }
     
     @objc func presentCreateLogViewController() {
-        present(createLogViewController, animated: true, completion: nil)
+        present(CreateLogViewController(), animated: true, completion: nil)
     }
 }
 

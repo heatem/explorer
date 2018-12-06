@@ -129,6 +129,18 @@ class CreateLogViewController: UIViewController {
         let diveNotes = createLogView.notesTextView.text
         let diveBuddies = [User(fullName: "Full Name", username: createLogView.buddiesTextField.text ?? "", icon: "")]
         
-        let log = DiveLog(diveNumber: Int(diveNumber ?? "0") ?? 0, date: diveDate, depth: Int(diveDepth), location: diveLocation, entryType: entryType, waterType: waterType, timeIn: diveStartTime, timeOut: diveEndTime, notes: diveNotes, user: user, buddies: diveBuddies)
+        let log = DiveLog(
+            diveNumber: Int(diveNumber ?? "0") ?? 0,
+            date: diveDate,
+            depth: Int(diveDepth),
+            location: diveLocation,
+            entryType: entryType,
+            waterType: waterType,
+            timeIn: diveStartTime,
+            timeOut: diveEndTime,
+            notes: diveNotes,
+            user: user,
+            buddies: diveBuddies
+        )
     }
 }
