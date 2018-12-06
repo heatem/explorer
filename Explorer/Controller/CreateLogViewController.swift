@@ -77,24 +77,26 @@ class CreateLogViewController: UIViewController {
             self.view.layoutIfNeeded()
         }
         
+        var buttonTitle = ""
+        let formatter = DateFormatter()
+        
         switch selectedDatePickerButton {
             case createLogView.diveDateButton:
                 diveDate = datePickerView.picker.date
-                let formatter = DateFormatter()
                 formatter.dateFormat = "dd MMM yyyy"
-                createLogView.diveDateButton.setTitle("  \(formatter.string(from: diveDate))", for: .normal)
+                buttonTitle = formatter.string(from: diveDate)
             case createLogView.startTimeButton:
                 diveStartTime = datePickerView.picker.date
-                let formatter = DateFormatter()
                 formatter.dateFormat = "h:mm a"
-                createLogView.startTimeButton.setTitle("  \(formatter.string(from: diveStartTime))", for: .normal)
+                buttonTitle = formatter.string(from: diveStartTime)
             case createLogView.endTimeButton:
                 diveEndTime = datePickerView.picker.date
-                let formatter = DateFormatter()
                 formatter.dateFormat = "h:mm a"
-                createLogView.endTimeButton.setTitle("  \(formatter.string(from: diveEndTime))", for: .normal)
+                buttonTitle = formatter.string(from: diveEndTime)
         default: ()
         }
+        
+        selectedDatePickerButton?.setTitle("  \(buttonTitle)", for: .normal)
     }
     
     @objc func presentPicker(button: UIButton) {
