@@ -8,8 +8,8 @@
 
 import UIKit
 
-enum DatePickerType {
-    case normal
+enum DatePickerMode {
+    case dateAndTime
     case date
     case time
 }
@@ -24,15 +24,13 @@ class DatePickerView: UIView {
         return button
     }()
 
-    init(type: DatePickerType = .normal) {
+    init(type: DatePickerMode = .dateAndTime) {
         super.init(frame: .zero)
         
         backgroundColor = .white
         
         addSubview(doneButton)
         addSubview(picker)
-        
-        configureWith(type)
         
         installConstraints()
     }
@@ -49,14 +47,6 @@ class DatePickerView: UIView {
         picker.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         picker.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         picker.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-    }
-    
-    func configureWith(_ type: DatePickerType) {
-        switch type {
-            case .date: picker.datePickerMode = .date
-            case .time: picker.datePickerMode = .time
-            default: picker.datePickerMode = .dateAndTime
-        }
     }
     
     required init?(coder aDecoder: NSCoder) {

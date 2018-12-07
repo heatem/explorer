@@ -107,9 +107,9 @@ class CreateLogViewController: UIViewController {
         
         selectedDatePickerButton = button
         switch selectedDatePickerButton {
-            case createLogView.diveDateButton: datePickerView.configureWith(.date)
-            case createLogView.startTimeButton, createLogView.endTimeButton: datePickerView.configureWith(.time)
-            default: datePickerView.configureWith(.normal)
+            case createLogView.diveDateButton: datePickerView.picker.datePickerMode = .date
+            case createLogView.startTimeButton, createLogView.endTimeButton: datePickerView.picker.datePickerMode = .time
+            default: datePickerView.picker.datePickerMode = .dateAndTime
         }
     }
     
