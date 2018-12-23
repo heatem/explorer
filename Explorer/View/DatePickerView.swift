@@ -20,7 +20,8 @@ class DatePickerView: UIView {
     let doneButton: UIButton = {
         let button = UIButton()
         button.setTitle("Done", for: .normal)
-        button.setTitleColor(.blue, for: .normal)
+        button.titleLabel?.font = .boldSystemFont(ofSize: 18)
+        button.setTitleColor(UIColor(red: 0/255.0, green: 122/255.0, blue: 255.0/255.0, alpha: 1.0), for: .normal)
         return button
     }()
 
@@ -38,7 +39,7 @@ class DatePickerView: UIView {
     func installConstraints() {
         doneButton.translatesAutoresizingMaskIntoConstraints = false
         doneButton.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        doneButton.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        doneButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8).isActive = true
         doneButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
         doneButton.widthAnchor.constraint(equalToConstant: 60).isActive = true
         

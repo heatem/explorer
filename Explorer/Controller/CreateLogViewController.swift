@@ -9,8 +9,6 @@
 import Foundation
 import UIKit
 
-// TODO: create the function to send data to the database in this file.
-
 class CreateLogViewController: UIViewController {
     
     lazy var scrollView: UIScrollView = {
@@ -18,6 +16,15 @@ class CreateLogViewController: UIViewController {
         view.contentSize.height = 1200
         view.backgroundColor = .lightGray
         return view
+    }()
+    
+    let toolbar: UIToolbar = {
+        let bar = UIToolbar()
+        let flexspace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let doneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(dismissKeyboard))
+        bar.setItems([flexspace, doneButton], animated: false)
+        bar.sizeToFit()
+        return bar
     }()
     
     let createLogView = CreateLogView()
@@ -46,6 +53,15 @@ class CreateLogViewController: UIViewController {
         createLogView.saveDiveButton.addTarget(self, action: #selector(saveDive), for: .touchUpInside)
         
         installConstraints()
+        
+        createLogView.diveNumberTextField.delegate = self
+        createLogView.locationTextField.delegate = self
+        createLogView.buddiesTextField.delegate = self
+        
+        createLogView.diveNumberTextField.inputAccessoryView = toolbar
+        createLogView.locationTextField.inputAccessoryView = toolbar
+        createLogView.notesTextView.inputAccessoryView = toolbar
+        createLogView.buddiesTextField.inputAccessoryView = toolbar
     }
     
     func installConstraints() {
@@ -144,5 +160,17 @@ class CreateLogViewController: UIViewController {
             user: user,
             buddies: diveBuddies
         )
+    }
+    
+    @objc func dismissKeyboard() {
+        self.view.endEditing(true)
+    }
+}
+
+extension CreateLogViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        resignFirstResponder()
+        self.view.endEditing(true)
+        return true
     }
 }
