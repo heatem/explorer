@@ -9,8 +9,6 @@
 import Foundation
 import UIKit
 
-// TODO: set button and text title to be the same size
-
 class CreateLogView: UIView {
     
     let diveNumberLabel: UILabel = {
@@ -204,6 +202,15 @@ class CreateLogView: UIView {
         return button
     }()
     
+    let toolbar: UIToolbar = {
+        let bar = UIToolbar()
+        let flexspace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let doneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(dismissKeyboard))
+        bar.setItems([flexspace, doneButton], animated: false)
+        bar.sizeToFit()
+        return bar
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -232,6 +239,11 @@ class CreateLogView: UIView {
         addSubview(saveDiveButton)
         
         installConstraints()
+        
+        diveNumberTextField.inputAccessoryView = toolbar
+        locationTextField.inputAccessoryView = toolbar
+        notesTextView.inputAccessoryView = toolbar
+        buddiesTextField.inputAccessoryView = toolbar
     }
     
     func installConstraints() {
@@ -387,5 +399,17 @@ class CreateLogView: UIView {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    @objc func dismissKeyboard() {
+        endEditing(true)
+    }
+}
+
+extension CreateLogViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        resignFirstResponder()
+        self.view.endEditing(true)
+        return true
     }
 }

@@ -18,15 +18,6 @@ class CreateLogViewController: UIViewController {
         return view
     }()
     
-    let toolbar: UIToolbar = {
-        let bar = UIToolbar()
-        let flexspace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        let doneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(dismissKeyboard))
-        bar.setItems([flexspace, doneButton], animated: false)
-        bar.sizeToFit()
-        return bar
-    }()
-    
     let createLogView = CreateLogView()
     let datePickerView = DatePickerView()
     
@@ -45,7 +36,6 @@ class CreateLogViewController: UIViewController {
         view.addSubview(scrollView)
         view.addSubview(datePickerView)
         
-        datePickerView.doneButton.addTarget(self, action: #selector(setDate), for: .touchUpInside)
         createLogView.diveDateButton.addTarget(self, action: #selector(presentPicker(button:)), for: .touchUpInside)
         createLogView.startTimeButton.addTarget(self, action: #selector(presentPicker(button:)), for: .touchUpInside)
         createLogView.endTimeButton.addTarget(self, action: #selector(presentPicker(button:)), for: .touchUpInside)
@@ -53,15 +43,6 @@ class CreateLogViewController: UIViewController {
         createLogView.saveDiveButton.addTarget(self, action: #selector(saveDive), for: .touchUpInside)
         
         installConstraints()
-        
-        createLogView.diveNumberTextField.delegate = self
-        createLogView.locationTextField.delegate = self
-        createLogView.buddiesTextField.delegate = self
-        
-        createLogView.diveNumberTextField.inputAccessoryView = toolbar
-        createLogView.locationTextField.inputAccessoryView = toolbar
-        createLogView.notesTextView.inputAccessoryView = toolbar
-        createLogView.buddiesTextField.inputAccessoryView = toolbar
     }
     
     func installConstraints() {
@@ -160,17 +141,5 @@ class CreateLogViewController: UIViewController {
             user: user,
             buddies: diveBuddies
         )
-    }
-    
-    @objc func dismissKeyboard() {
-        self.view.endEditing(true)
-    }
-}
-
-extension CreateLogViewController: UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        resignFirstResponder()
-        self.view.endEditing(true)
-        return true
     }
 }
