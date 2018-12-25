@@ -21,7 +21,7 @@ class CreateLogViewController: UIViewController {
     let toolbar: UIToolbar = {
         let bar = UIToolbar()
         let flexspace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        let doneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(dismissKeyboard))
+        let doneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(dismissInputView))
         bar.setItems([flexspace, doneButton], animated: false)
         bar.sizeToFit()
         return bar
@@ -62,6 +62,9 @@ class CreateLogViewController: UIViewController {
         createLogView.locationTextField.inputAccessoryView = toolbar
         createLogView.notesTextView.inputAccessoryView = toolbar
         createLogView.buddiesTextField.inputAccessoryView = toolbar
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissInputView))
+        view.addGestureRecognizer(tap)
     }
     
     func installConstraints() {
@@ -116,6 +119,8 @@ class CreateLogViewController: UIViewController {
     }
     
     @objc func presentPicker(button: UIButton) {
+        dismissInputView()
+        
         datePickerBottomConstraint?.constant = 0
         UIView.animate(withDuration: 0.34) {
             self.view.layoutIfNeeded()
@@ -162,12 +167,21 @@ class CreateLogViewController: UIViewController {
         )
     }
     
-    @objc func dismissKeyboard() {
+    @objc func dismissInputView() {
         self.view.endEditing(true)
+        
+        datePickerBottomConstraint?.constant = 216
+        UIView.animate(withDuration: 0.34) {
+            self.view.layoutIfNeeded()
+        }
     }
 }
 
 extension CreateLogViewController: UITextFieldDelegate {
+    public func textFieldShouldClear(_ textField: UITextField) -> Bool {
+        return false
+    }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         resignFirstResponder()
         self.view.endEditing(true)
