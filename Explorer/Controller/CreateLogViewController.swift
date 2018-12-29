@@ -18,15 +18,6 @@ class CreateLogViewController: UIViewController {
         return view
     }()
     
-    let toolbar: UIToolbar = {
-        let bar = UIToolbar()
-        let flexspace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        let doneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(dismissInputView))
-        bar.setItems([flexspace, doneButton], animated: false)
-        bar.sizeToFit()
-        return bar
-    }()
-    
     let createLogView = CreateLogView()
     let datePickerView = DatePickerView()
     
@@ -45,7 +36,7 @@ class CreateLogViewController: UIViewController {
         view.addSubview(scrollView)
         view.addSubview(datePickerView)
         
-        datePickerView.doneButton.addTarget(self, action: #selector(setDate), for: .touchUpInside)
+        datePickerView.toolbar.items?[1].action = #selector(setDate)
         createLogView.diveDateButton.addTarget(self, action: #selector(presentPicker(button:)), for: .touchUpInside)
         createLogView.startTimeButton.addTarget(self, action: #selector(presentPicker(button:)), for: .touchUpInside)
         createLogView.endTimeButton.addTarget(self, action: #selector(presentPicker(button:)), for: .touchUpInside)
@@ -53,15 +44,6 @@ class CreateLogViewController: UIViewController {
         createLogView.saveDiveButton.addTarget(self, action: #selector(saveDive), for: .touchUpInside)
         
         installConstraints()
-        
-        createLogView.diveNumberTextField.delegate = self
-        createLogView.locationTextField.delegate = self
-        createLogView.buddiesTextField.delegate = self
-        
-        createLogView.diveNumberTextField.inputAccessoryView = toolbar
-        createLogView.locationTextField.inputAccessoryView = toolbar
-        createLogView.notesTextView.inputAccessoryView = toolbar
-        createLogView.buddiesTextField.inputAccessoryView = toolbar
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissInputView))
         view.addGestureRecognizer(tap)
@@ -165,6 +147,7 @@ class CreateLogViewController: UIViewController {
             user: user,
             buddies: diveBuddies
         )
+        print(log)
     }
     
     @objc func dismissInputView() {
@@ -174,17 +157,5 @@ class CreateLogViewController: UIViewController {
         UIView.animate(withDuration: 0.34) {
             self.view.layoutIfNeeded()
         }
-    }
-}
-
-extension CreateLogViewController: UITextFieldDelegate {
-    public func textFieldShouldClear(_ textField: UITextField) -> Bool {
-        return false
-    }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        resignFirstResponder()
-        self.view.endEditing(true)
-        return true
     }
 }
