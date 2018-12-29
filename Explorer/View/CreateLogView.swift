@@ -241,9 +241,10 @@ class CreateLogView: UIView {
         installConstraints()
         
         diveNumberTextField.inputAccessoryView = toolbar
-        locationTextField.inputAccessoryView = toolbar
         notesTextView.inputAccessoryView = toolbar
-        buddiesTextField.inputAccessoryView = toolbar
+        
+        locationTextField.delegate = self
+        buddiesTextField.delegate = self
     }
     
     func installConstraints() {
@@ -406,10 +407,10 @@ class CreateLogView: UIView {
     }
 }
 
-extension CreateLogViewController: UITextFieldDelegate {
+extension CreateLogView: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         resignFirstResponder()
-        self.view.endEditing(true)
+        endEditing(true)
         return true
     }
 }
