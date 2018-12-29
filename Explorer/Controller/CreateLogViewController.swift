@@ -36,6 +36,7 @@ class CreateLogViewController: UIViewController {
         view.addSubview(scrollView)
         view.addSubview(datePickerView)
         
+        datePickerView.toolbar.items?[1].action = #selector(setDate)
         createLogView.diveDateButton.addTarget(self, action: #selector(presentPicker(button:)), for: .touchUpInside)
         createLogView.startTimeButton.addTarget(self, action: #selector(presentPicker(button:)), for: .touchUpInside)
         createLogView.endTimeButton.addTarget(self, action: #selector(presentPicker(button:)), for: .touchUpInside)

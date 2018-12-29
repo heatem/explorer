@@ -21,7 +21,7 @@ class DatePickerView: UIView {
     let toolbar: UIToolbar = {
         let bar = UIToolbar()
         let flexspace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        let doneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(CreateLogViewController.setDate))
+        let doneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: nil)
         bar.setItems([flexspace, doneButton], animated: false)
         bar.sizeToFit()
         return bar
