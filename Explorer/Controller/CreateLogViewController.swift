@@ -9,8 +9,6 @@
 import Foundation
 import UIKit
 
-// TODO: create the function to send data to the database in this file.
-
 class CreateLogViewController: UIViewController {
     
     lazy var scrollView: UIScrollView = {
@@ -38,7 +36,7 @@ class CreateLogViewController: UIViewController {
         view.addSubview(scrollView)
         view.addSubview(datePickerView)
         
-        datePickerView.doneButton.addTarget(self, action: #selector(setDate), for: .touchUpInside)
+        datePickerView.toolbar.items?[1].action = #selector(setDate)
         createLogView.diveDateButton.addTarget(self, action: #selector(presentPicker(button:)), for: .touchUpInside)
         createLogView.startTimeButton.addTarget(self, action: #selector(presentPicker(button:)), for: .touchUpInside)
         createLogView.endTimeButton.addTarget(self, action: #selector(presentPicker(button:)), for: .touchUpInside)
