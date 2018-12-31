@@ -28,6 +28,8 @@ class CreateLogViewController: UIViewController {
     var diveDate = Date()
     var diveStartTime = Date()
     var diveEndTime = Date()
+
+    var xCenterConstraint: NSLayoutConstraint?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,6 +49,10 @@ class CreateLogViewController: UIViewController {
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissInputView))
         view.addGestureRecognizer(tap)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
     }
     
     func installConstraints() {
@@ -156,5 +162,32 @@ class CreateLogViewController: UIViewController {
         UIView.animate(withDuration: 0.34) {
             self.view.layoutIfNeeded()
         }
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    @objc func keyboardWillShow(notification: Notification) {
+        print("****")
+        // TODO: This function gets called so figure out how to move the field where you want it.
+        
+//        if (notification.userInfo != nil) {
+//            self.xCenterConstraint?.constant -= 100
+//            UIView.animate(withDuration: 0.25, animations: {
+//                self.view.layoutIfNeeded()
+//            })
+//        }
+    }
+    
+    @objc func keyboardWillHide(notification: Notification) {
+        // TODO: How do I want to handle this?
+        print("keyboard hides")
+//        if (notification.userInfo != nil) {
+//            self.xCenterConstraint?.constant = 0
+//            UIView.animate(withDuration: 0.25, animations: {
+//                self.view.layoutIfNeeded()
+//            })
+//        }
     }
 }
