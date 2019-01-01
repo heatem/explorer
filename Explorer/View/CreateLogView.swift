@@ -23,7 +23,6 @@ class CreateLogView: UIView {
         textfield.textColor = .black
         textfield.font = UIFont(name: "Roboto-Regular", size: 17)
         textfield.borderStyle = .roundedRect
-        textfield.clearsOnBeginEditing = true
         textfield.keyboardType = .numberPad
         return textfield
     }()
@@ -409,10 +408,6 @@ class CreateLogView: UIView {
 }
 
 extension CreateLogView: UITextFieldDelegate {
-    public func textFieldShouldClear(_ textField: UITextField) -> Bool {
-        return false
-    }
-
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         resignFirstResponder()
         endEditing(true)
