@@ -9,8 +9,6 @@
 import Foundation
 import UIKit
 
-// TODO: set button and text title to be the same size
-
 class CreateLogView: UIView {
     
     let diveNumberLabel: UILabel = {

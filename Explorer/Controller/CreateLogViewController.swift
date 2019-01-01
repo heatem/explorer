@@ -147,7 +147,6 @@ class CreateLogViewController: UIViewController {
             user: user,
             buddies: diveBuddies
         )
-        print(log)
     }
     
     @objc func dismissInputView() {
