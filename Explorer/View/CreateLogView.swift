@@ -412,7 +412,7 @@ extension CreateLogView: UITextFieldDelegate {
     public func textFieldShouldClear(_ textField: UITextField) -> Bool {
         return false
     }
-    
+
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         resignFirstResponder()
         endEditing(true)

@@ -148,7 +148,7 @@ class CreateLogViewController: UIViewController {
             buddies: diveBuddies
         )
     }
-    
+
     @objc func dismissInputView() {
         self.view.endEditing(true)
         

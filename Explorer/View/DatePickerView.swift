@@ -17,6 +17,7 @@ enum DatePickerMode {
 class DatePickerView: UIView {
     
     let picker = UIDatePicker()
+    
     let toolbar: UIToolbar = {
         let bar = UIToolbar()
         let flexspace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
