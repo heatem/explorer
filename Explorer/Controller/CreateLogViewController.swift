@@ -174,17 +174,42 @@ class CreateLogViewController: UIViewController {
         let keyboardFrame = keyboardSize.cgRectValue
         let keyboardOffset = view.frame.height - (keyboardFrame.height + 20)
         
-        var textfield = createLogView.diveNumberTextField
+        var keyboardFocus: CGFloat = 0.0
+        
+        // TODO: This kinda works but things move all over the place. figure out how to get things to move to the right spot consistently and also get the textview to move higher than other fields and the toggles to move period. Toggles don't move at the moment
+        if createLogView.diveNumberTextField.isFirstResponder {
+            keyboardFocus = createLogView.diveNumberTextField.frame.origin.y
+        }
         
         if createLogView.locationTextField.isFirstResponder {
-            textfield = createLogView.locationTextField
+            keyboardFocus = createLogView.locationTextField.frame.origin.y
+        }
+        
+        if createLogView.entryTypeControl.isFirstResponder {
+            keyboardFocus = createLogView.diveDateButton.frame.origin.y
+        }
+        
+        if createLogView.waterTypeControl.isFirstResponder {
+            keyboardFocus = createLogView.waterTypeControl.frame.origin.y
+        }
+        
+        if createLogView.startTimeButton.isFirstResponder {
+            keyboardFocus = createLogView.startTimeButton.frame.origin.y
+        }
+        
+        if createLogView.endTimeButton.isFirstResponder {
+            keyboardFocus = createLogView.startTimeButton.frame.origin.y
+        }
+        
+        if createLogView.notesTextView.isFirstResponder {
+            keyboardFocus = createLogView.notesTextView.frame.origin.y
         }
         
         if createLogView.buddiesTextField.isFirstResponder {
-            textfield = createLogView.buddiesTextField
+            keyboardFocus = createLogView.buddiesTextField.frame.origin.y
         }
         
-        movesScrollview(to: textfield, for: keyboardOffset)
+        movesScrollview(to: keyboardFocus, for: keyboardOffset)
     }
     
     @objc func keyboardWillHide(notification: Notification) {
@@ -192,11 +217,10 @@ class CreateLogViewController: UIViewController {
         print("keyboard hides")
     }
     
-    func movesScrollview(to textfield: UITextField, for keyboardOffset: CGFloat) {
-        let yOrigin = textfield.frame.origin.y
+    func movesScrollview(to keyboardFocus: CGFloat, for keyboardOffset: CGFloat) {
         let spaceAboveKeyboard = view.frame.height - keyboardOffset
-        if spaceAboveKeyboard <= yOrigin {
-            scrollView.setContentOffset(CGPoint(x: 0, y: keyboardOffset - (view.frame.height - yOrigin)), animated: true)
+        if spaceAboveKeyboard != keyboardFocus {
+            scrollView.setContentOffset(CGPoint(x: 0, y: keyboardOffset - (view.frame.height - keyboardFocus)), animated: true)
         }
     }
 }
