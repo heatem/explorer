@@ -23,7 +23,6 @@ class CreateLogView: UIView {
         textfield.textColor = .black
         textfield.font = UIFont(name: "Roboto-Regular", size: 17)
         textfield.borderStyle = .roundedRect
-        textfield.clearsOnBeginEditing = true
         textfield.keyboardType = .numberPad
         return textfield
     }()
@@ -243,6 +242,7 @@ class CreateLogView: UIView {
         diveNumberTextField.inputAccessoryView = toolbar
         notesTextView.inputAccessoryView = toolbar
         
+        diveNumberTextField.delegate = self
         locationTextField.delegate = self
         buddiesTextField.delegate = self
     }

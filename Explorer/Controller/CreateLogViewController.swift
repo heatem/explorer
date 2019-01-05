@@ -44,6 +44,9 @@ class CreateLogViewController: UIViewController {
         createLogView.saveDiveButton.addTarget(self, action: #selector(saveDive), for: .touchUpInside)
         
         installConstraints()
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissInputView))
+        view.addGestureRecognizer(tap)
     }
     
     func installConstraints() {
@@ -98,6 +101,8 @@ class CreateLogViewController: UIViewController {
     }
     
     @objc func presentPicker(button: UIButton) {
+        dismissInputView()
+        
         datePickerBottomConstraint?.constant = 0
         UIView.animate(withDuration: 0.34) {
             self.view.layoutIfNeeded()
@@ -142,5 +147,14 @@ class CreateLogViewController: UIViewController {
             user: user,
             buddies: diveBuddies
         )
+    }
+
+    @objc func dismissInputView() {
+        self.view.endEditing(true)
+        
+        datePickerBottomConstraint?.constant = 216
+        UIView.animate(withDuration: 0.34) {
+            self.view.layoutIfNeeded()
+        }
     }
 }
