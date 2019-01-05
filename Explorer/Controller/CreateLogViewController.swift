@@ -13,7 +13,7 @@ class CreateLogViewController: UIViewController {
     
     lazy var scrollView: UIScrollView = {
         let view = UIScrollView()
-        view.contentSize.height = 1200
+        view.contentSize.height = 1260
         view.backgroundColor = .lightGray
         return view
     }()
@@ -64,7 +64,7 @@ class CreateLogViewController: UIViewController {
         
         createLogView.translatesAutoresizingMaskIntoConstraints = false
         createLogView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
-        createLogView.heightAnchor.constraint(equalToConstant: 1200).isActive = true
+        createLogView.heightAnchor.constraint(equalToConstant: 1260).isActive = true
         createLogView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
         createLogView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
         
@@ -169,25 +169,34 @@ class CreateLogViewController: UIViewController {
     }
     
     @objc func keyboardWillShow(notification: Notification) {
-        print("****")
-        // TODO: This function gets called so figure out how to move the field where you want it.
+        guard let userInfo = notification.userInfo else { return }
+        guard let keyboardSize = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
+        let keyboardFrame = keyboardSize.cgRectValue
+        let keyboardOffset = view.frame.height - (keyboardFrame.height + 20)
         
-//        if (notification.userInfo != nil) {
-//            self.xCenterConstraint?.constant -= 100
-//            UIView.animate(withDuration: 0.25, animations: {
-//                self.view.layoutIfNeeded()
-//            })
-//        }
+        var textfield = createLogView.diveNumberTextField
+        
+        if createLogView.locationTextField.isFirstResponder {
+            textfield = createLogView.locationTextField
+        }
+        
+        if createLogView.buddiesTextField.isFirstResponder {
+            textfield = createLogView.buddiesTextField
+        }
+        
+        movesScrollview(to: textfield, for: keyboardOffset)
     }
     
     @objc func keyboardWillHide(notification: Notification) {
         // TODO: How do I want to handle this?
         print("keyboard hides")
-//        if (notification.userInfo != nil) {
-//            self.xCenterConstraint?.constant = 0
-//            UIView.animate(withDuration: 0.25, animations: {
-//                self.view.layoutIfNeeded()
-//            })
-//        }
+    }
+    
+    func movesScrollview(to textfield: UITextField, for keyboardOffset: CGFloat) {
+        let yOrigin = textfield.frame.origin.y
+        let spaceAboveKeyboard = view.frame.height - keyboardOffset
+        if spaceAboveKeyboard <= yOrigin {
+            scrollView.setContentOffset(CGPoint(x: 0, y: keyboardOffset - (view.frame.height - yOrigin)), animated: true)
+        }
     }
 }
