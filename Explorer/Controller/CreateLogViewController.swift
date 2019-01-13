@@ -173,26 +173,21 @@ class CreateLogViewController: UIViewController {
     @objc func keyboardWillShow(notification: Notification) {
         dismissPickerView()
         
+        let bufferFromKeyboard: CGFloat = 18
+        var keyboardFocus: CGFloat = 0
+        
         guard let userInfo = notification.userInfo else { return }
         guard let keyboardSize = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
         let keyboardFrame = keyboardSize.cgRectValue
-        inputOffset = view.frame.height - (keyboardFrame.height + 18)
-        
-        var keyboardFocus: CGFloat = 0.0
+        inputOffset = view.frame.height - (keyboardFrame.height + bufferFromKeyboard)
         
         if createLogView.diveNumberTextField.isFirstResponder {
             keyboardFocus = createLogView.diveNumberTextField.frame.origin.y
-        }
-
-        if createLogView.locationTextField.isFirstResponder {
+        } else if createLogView.locationTextField.isFirstResponder {
             keyboardFocus = createLogView.locationTextField.frame.origin.y
-        }
-
-        if createLogView.notesTextView.isFirstResponder {
-            keyboardFocus = createLogView.notesTextView.frame.origin.y + 36
-        }
-
-        if createLogView.buddiesTextField.isFirstResponder {
+        } else if createLogView.notesTextView.isFirstResponder {
+            keyboardFocus = createLogView.notesTextView.frame.origin.y + createLogView.notesTextView.frame.height
+        } else if createLogView.buddiesTextField.isFirstResponder {
             keyboardFocus = createLogView.buddiesTextField.frame.origin.y
         }
         
