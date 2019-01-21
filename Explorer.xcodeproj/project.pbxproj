@@ -14,6 +14,8 @@
 		AE4C6F6021210ADD00F6FFC9 /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AE4C6F5D21210ADD00F6FFC9 /* Roboto-Black.ttf */; };
 		AE4C6F6121210ADD00F6FFC9 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AE4C6F5E21210ADD00F6FFC9 /* Roboto-Regular.ttf */; };
 		AE6FC8D02123880500F4B48A /* DiveLogViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6FC8CF2123880500F4B48A /* DiveLogViewModel.swift */; };
+		AE8932E521F6785B0068AAD9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AE8932E421F6785B0068AAD9 /* GoogleService-Info.plist */; };
+		AE8932E721F678700068AAD9 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8932E621F678700068AAD9 /* Keys.swift */; };
 		AEA8ECBB2134B80C00925D80 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA8ECBA2134B80C00925D80 /* Location.swift */; };
 		AEB697B0211E960800CB8F3C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB697AF211E960800CB8F3C /* AppDelegate.swift */; };
 		AEB697B2211E960800CB8F3C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB697B1211E960800CB8F3C /* ViewController.swift */; };
@@ -56,6 +58,8 @@
 		AE4C6F5D21210ADD00F6FFC9 /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Black.ttf"; sourceTree = "<group>"; };
 		AE4C6F5E21210ADD00F6FFC9 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		AE6FC8CF2123880500F4B48A /* DiveLogViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiveLogViewModel.swift; sourceTree = "<group>"; };
+		AE8932E421F6785B0068AAD9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		AE8932E621F678700068AAD9 /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 		AEA8ECBA2134B80C00925D80 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		AEB697AC211E960800CB8F3C /* Explorer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Explorer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEB697AF211E960800CB8F3C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -166,6 +170,7 @@
 		AE76F2742133369400FE9DEB /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				AE8932E621F678700068AAD9 /* Keys.swift */,
 				AEECF4A2212288F200AE6314 /* RandomDate.swift */,
 				AEB697B6211E960800CB8F3C /* Assets.xcassets */,
 				AE4C6F6221210AE600F6FFC9 /* Fonts */,
@@ -203,6 +208,7 @@
 				AE48FF682131F7580037042F /* View */,
 				AE76F2742133369400FE9DEB /* Supporting Files */,
 				AEB697BB211E960900CB8F3C /* Info.plist */,
+				AE8932E421F6785B0068AAD9 /* GoogleService-Info.plist */,
 				AEB697AF211E960800CB8F3C /* AppDelegate.swift */,
 				AEB697B3211E960800CB8F3C /* Main.storyboard */,
 				AEB697B8211E960800CB8F3C /* LaunchScreen.storyboard */,
@@ -343,6 +349,7 @@
 				AE4C6F6021210ADD00F6FFC9 /* Roboto-Black.ttf in Resources */,
 				AEB697B7211E960800CB8F3C /* Assets.xcassets in Resources */,
 				AEB697B5211E960800CB8F3C /* Main.storyboard in Resources */,
+				AE8932E521F6785B0068AAD9 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -412,6 +419,7 @@
 				AEECF4A121227F4600AE6314 /* DiveLog.swift in Sources */,
 				AE6FC8D02123880500F4B48A /* DiveLogViewModel.swift in Sources */,
 				AEB697DE211EAE1600CB8F3C /* TableViewCell.swift in Sources */,
+				AE8932E721F678700068AAD9 /* Keys.swift in Sources */,
 				AEECF4A3212288F200AE6314 /* RandomDate.swift in Sources */,
 				AEC4FD33213F912E00072E02 /* CreateLogView.swift in Sources */,
 				AE220E08219F0E02000BC3C5 /* DatePickerView.swift in Sources */,
