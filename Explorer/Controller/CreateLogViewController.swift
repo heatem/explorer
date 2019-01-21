@@ -13,7 +13,7 @@ class CreateLogViewController: UIViewController {
     
     lazy var scrollView: UIScrollView = {
         let view = UIScrollView()
-        view.contentSize.height = 1200
+        view.contentSize.height = 1300
         view.backgroundColor = .lightGray
         return view
     }()
@@ -29,9 +29,11 @@ class CreateLogViewController: UIViewController {
     var diveStartTime = Date()
     var diveEndTime = Date()
     
+    var inputOffset: CGFloat = 200.0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         scrollView.addSubview(createLogView)
         view.addSubview(scrollView)
         view.addSubview(datePickerView)
@@ -47,6 +49,8 @@ class CreateLogViewController: UIViewController {
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissInputView))
         view.addGestureRecognizer(tap)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
     }
     
     func installConstraints() {
@@ -58,7 +62,7 @@ class CreateLogViewController: UIViewController {
         
         createLogView.translatesAutoresizingMaskIntoConstraints = false
         createLogView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
-        createLogView.heightAnchor.constraint(equalToConstant: 1200).isActive = true
+        createLogView.heightAnchor.constraint(equalToConstant: 1300).isActive = true
         createLogView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
         createLogView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
         
@@ -108,12 +112,19 @@ class CreateLogViewController: UIViewController {
             self.view.layoutIfNeeded()
         }
         
+        var pickerFocus: CGFloat = 0.0
+        
         selectedDatePickerButton = button
         switch selectedDatePickerButton {
-            case createLogView.diveDateButton: datePickerView.picker.datePickerMode = .date
+            case createLogView.diveDateButton:
+                datePickerView.picker.datePickerMode = .date
+                pickerFocus = createLogView.diveDateButton.frame.origin.y
             case createLogView.startTimeButton, createLogView.endTimeButton: datePickerView.picker.datePickerMode = .time
+                pickerFocus = createLogView.startTimeButton.frame.origin.y
             default: datePickerView.picker.datePickerMode = .dateAndTime
         }
+        
+        movesScrollview(to: pickerFocus, for: inputOffset)
     }
     
     @objc func saveDive() {
@@ -152,9 +163,48 @@ class CreateLogViewController: UIViewController {
     @objc func dismissInputView() {
         self.view.endEditing(true)
         
+        dismissPickerView()
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+
+    @objc func keyboardWillShow(notification: Notification) {
+        dismissPickerView()
+        
+        let bufferFromKeyboard: CGFloat = 18
+        var keyboardFocus: CGFloat = 0
+        
+        guard let userInfo = notification.userInfo else { return }
+        guard let keyboardSize = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
+        let keyboardFrame = keyboardSize.cgRectValue
+        inputOffset = view.frame.height - (keyboardFrame.height + bufferFromKeyboard)
+        
+        if createLogView.diveNumberTextField.isFirstResponder {
+            keyboardFocus = createLogView.diveNumberTextField.frame.origin.y
+        } else if createLogView.locationTextField.isFirstResponder {
+            keyboardFocus = createLogView.locationTextField.frame.origin.y
+        } else if createLogView.notesTextView.isFirstResponder {
+            keyboardFocus = createLogView.notesTextView.frame.origin.y + createLogView.notesTextView.frame.height
+        } else if createLogView.buddiesTextField.isFirstResponder {
+            keyboardFocus = createLogView.buddiesTextField.frame.origin.y
+        }
+        
+        movesScrollview(to: keyboardFocus, for: inputOffset)
+    }
+    
+    func dismissPickerView() {
         datePickerBottomConstraint?.constant = 216
         UIView.animate(withDuration: 0.34) {
             self.view.layoutIfNeeded()
+        }
+    }
+    
+    func movesScrollview(to inputFocus: CGFloat, for inputOffset: CGFloat) {
+        let spaceAboveKeyboard = view.frame.height - inputOffset
+        if spaceAboveKeyboard != inputFocus {
+            scrollView.setContentOffset(CGPoint(x: 0, y: inputOffset - (view.frame.height - inputFocus)), animated: true)
         }
     }
 }
