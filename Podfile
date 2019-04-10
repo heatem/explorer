@@ -7,4 +7,5 @@ target 'Explorer' do
     pod 'AlamofireImage', '~> 3.3'
     pod 'Firebase/Core'
     pod 'Firebase/Database'
+    pod 'Firebase/Firestore'
 end
